@@ -13,6 +13,8 @@ declare module "styled-components" {
         };
         fonts: {
             grayJet: string;
+            fontPrimary: string;
+            fontSecondary: string;
         };
     }
 }

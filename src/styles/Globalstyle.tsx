@@ -12,4 +12,7 @@ export const GlobalStyle = createGlobalStyle`
         font-family: sans-serif;
         color: ${({ theme }) => theme.fonts.grayJet};
     }
+    img {
+        max-width: 100%;
+    }
 `;

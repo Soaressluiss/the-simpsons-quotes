@@ -10,5 +10,7 @@ export default {
     },
     fonts: {
         grayJet: "#333333",
+        fontPrimary: " 'DM Sans', sans-serif",
+        fontSecondary: " 'Lato', sans-serif",
     },
 };
