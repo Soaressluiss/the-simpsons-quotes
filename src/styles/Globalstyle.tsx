@@ -1,4 +1,4 @@
-import { createGlobalStyle} from "styled-components";
+import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
     * {
@@ -8,6 +8,8 @@ export const GlobalStyle = createGlobalStyle`
         list-style: none;
     }
     html, body {
-        background-color: #00ADEF;
+        background-color: ${({ theme }) => theme.colors.primary};
+        font-family: sans-serif;
+        color: ${({ theme }) => theme.fonts.grayJet};
     }
-`
+`;

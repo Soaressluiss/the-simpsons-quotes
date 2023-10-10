@@ -1,0 +1,14 @@
+export default {
+    name: "light",
+
+    colors: {
+        primary: "#00ADEF",
+        secondary: "#FFD100",
+        greenMint: "#02C39A",
+        teaRose: "#EEC4C4",
+        grayPlatinum: "#ECE8E8",
+    },
+    fonts: {
+        grayJet: "#333333",
+    },
+};
