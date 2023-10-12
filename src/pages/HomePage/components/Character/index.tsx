@@ -1,9 +1,13 @@
-import { CharacterContainer } from "./styles"
+import { CharacterContainer } from "./styles";
 
-export const Character:React.FC = () =>{
+interface ICharacterProps {
+    image: string;
+    character: string;
+}
+export const Character: React.FC<ICharacterProps> = ({ image, character }) => {
     return (
         <CharacterContainer tabIndex={3}>
-
+                <img  src={image} alt={character}  title={character}/>
         </CharacterContainer>
-    )
-}
+    );
+};

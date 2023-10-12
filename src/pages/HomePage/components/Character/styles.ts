@@ -8,12 +8,14 @@ export const CharacterContainer = styled.figure`
     box-shadow: 15px 15px 15px 0px rgba(0, 0, 0, 0.25);
     outline: none;
     cursor: pointer;
+    display: grid;
+    place-items: center;
     &:active {
         transition: all ease;
         transform: scale(0.99);
     }
     &:focus {
-        outline: 2px ${({ theme }) => theme.colors.grayPlatinum} solid;
+        outline: 3px ${({ theme }) => theme.colors.grayPlatinum} solid;
     }
 
     > img {

@@ -16,7 +16,7 @@ export const Menu: React.FC = () => {
         <NavBar>
             <ul>
                 {Icons.map(({ icon, id, onclick, title }) => (
-                    <IconsMenu key={id} onClick={onclick} isActive={active === title}>
+                    <IconsMenu key={id} onClick={onclick} $isActive={active === title}>
                         {icon}
                     </IconsMenu>
                 ))}

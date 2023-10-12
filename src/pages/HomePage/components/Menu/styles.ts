@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 interface IProps {
-    isActive: boolean;
+    $isActive: boolean | string;
 }
 
 export const NavBar = styled.nav`
@@ -16,6 +16,7 @@ export const NavBar = styled.nav`
     place-items: center;
     position: fixed;
     bottom: 25px;
+    z-index: 99;
     > ul {
         display: flex;
         flex-direction: row;
@@ -28,7 +29,7 @@ export const NavBar = styled.nav`
 export const IconsMenu = styled.li<IProps>`
     font-size: 2.3rem;
     cursor: pointer;
-    background-color: ${({ isActive }) => (isActive ? "#00ADEF" : "transparent")};
+    background-color: ${({ $isActive }) => ($isActive ? "#00ADEF" : "transparent")};
     padding: 0.5rem;
     border-radius: 50px;
     display: grid;
