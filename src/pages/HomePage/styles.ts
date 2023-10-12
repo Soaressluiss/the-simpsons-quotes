@@ -8,7 +8,6 @@ export const Container = styled.main`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    outline: 3px red solid ;
 `;
 
 export const LogoImage = styled.img`

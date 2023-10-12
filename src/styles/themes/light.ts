@@ -9,7 +9,7 @@ export default {
         grayPlatinum: "#ECE8E8",
     },
     fonts: {
-        grayJet: "#333333",
+        FColorPrimary: "#333333",
         fontPrimary: " 'DM Sans', sans-serif",
         fontSecondary: " 'Lato', sans-serif",
     },

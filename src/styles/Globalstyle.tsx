@@ -10,7 +10,7 @@ export const GlobalStyle = createGlobalStyle`
     html, body {
         background-color: ${({ theme }) => theme.colors.primary};
         font-family: sans-serif;
-        color: ${({ theme }) => theme.fonts.grayJet};
+        color: ${({ theme }) => theme.fonts.FColorPrimary};
     }
     img {
         max-width: 100%;

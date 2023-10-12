@@ -12,7 +12,7 @@ declare module "styled-components" {
             grayPlatinum: string;
         };
         fonts: {
-            grayJet: string;
+            FColorPrimary: string;
             fontPrimary: string;
             fontSecondary: string;
         };

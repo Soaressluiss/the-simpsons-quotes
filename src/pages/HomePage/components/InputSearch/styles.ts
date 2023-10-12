@@ -27,7 +27,7 @@ export const Input = styled.input`
         font-size: 1.75rem;
         font-weight: 400;
         letter-spacing: 3.36px;
-        color: ${({ theme }) => theme.fonts.grayJet};
+        color: ${({ theme }) => theme.fonts.FColorPrimary};
     }
 `;
 
@@ -42,7 +42,7 @@ export const Elipse = styled.span`
     display: grid;
     place-items: center;
     font-size: 2rem;
-    color: ${({ theme }) => theme.fonts.grayJet};
+    color: ${({ theme }) => theme.fonts.FColorPrimary};
     cursor: pointer;
     &:active {
         transition: 0.4s ease;
