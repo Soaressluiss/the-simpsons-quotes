@@ -10,6 +10,6 @@ const rotate = keyframes`
 `;
 
 export const LoadingStyle = styled.svg`
-    animation: ${rotate} 0.6s ease forwards;
+    animation: ${rotate} 1s ease forwards;
     z-index: 1;
 `;
