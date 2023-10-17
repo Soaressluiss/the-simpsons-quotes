@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const ContainerSearch = styled.section`
+export const ContainerSearch = styled.form`
     width: 935px;
     display: flex;
     flex-direction: row;

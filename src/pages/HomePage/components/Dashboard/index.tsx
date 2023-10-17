@@ -2,14 +2,15 @@ import { AxiosError } from "axios";
 import { instance } from "../../../../services/api";
 import { Character } from "../Character";
 import { DashboardContainer } from "./styles";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useContext } from "react";
 import { IData } from "../../../../types/data";
 import Loading from "../../../../components/Loading";
+import { SearchCharacterContext } from "../../../../contexts/SearchCharacterContext";
 
 export const Dashboard: React.FC = () => {
     const [data, setData] = useState<IData[]>([]);
-    const [isLoading, setIsLoading] = useState<boolean>(false);
     const [quotePerPage, setQuotePerPage] = useState(2);
+    const { dataSearch, isLoading, setIsLoading } = useContext(SearchCharacterContext);
 
     const looking = useRef<HTMLSpanElement>(null);
 
@@ -27,7 +28,7 @@ export const Dashboard: React.FC = () => {
         };
 
         HandleFetch();
-    }, [quotePerPage]);
+    }, [quotePerPage, setIsLoading]);
 
     useEffect(() => {
         const observer = new IntersectionObserver(observadora, {
@@ -49,9 +50,11 @@ export const Dashboard: React.FC = () => {
     return (
         <DashboardContainer>
             <section>
-                {data.map((item, id) => (
-                    <Character key={id} image={item.image} character={item.character} />
-                ))}
+                {dataSearch.length < 1
+                    ? data.map((item, id) => <Character key={id} image={item.image} character={item.character} />)
+                    : dataSearch.map((item, id) => (
+                          <Character key={id} image={item.image} character={item.character} />
+                      ))}
             </section>
             {isLoading && <Loading />}
             <span ref={looking} />
