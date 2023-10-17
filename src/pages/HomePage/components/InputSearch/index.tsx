@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { ContainerSearch, Elipse, Input } from "./styles";
+import { ContainerSearch, ElipseBtn, Input } from "./styles";
 import { FaSearch } from "react-icons/fa";
 import { SearchCharacterContext } from "../../../../contexts/SearchCharacterContext";
 
@@ -18,9 +18,9 @@ export const InputSeach: React.FC = () => {
                 placeholder="ex: Homer Simpsons"
                 onChange={({ target }) => setSearchCharacter(target.value)}
             />
-            <Elipse aria-label="button" tabIndex={2}>
+            <ElipseBtn tabIndex={2}>
                 <FaSearch />
-            </Elipse>
+            </ElipseBtn>
         </ContainerSearch>
     );
 };

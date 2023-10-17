@@ -31,7 +31,7 @@ export const Input = styled.input`
     }
 `;
 
-export const Elipse = styled.span`
+export const ElipseBtn = styled.button`
     display: block;
     width: 83px;
     height: 77px;
@@ -44,6 +44,7 @@ export const Elipse = styled.span`
     font-size: 2rem;
     color: ${({ theme }) => theme.fonts.FColorPrimary};
     cursor: pointer;
+    border: none;
     &:active {
         transition: 0.4s ease;
         transform: scale(0.95);
