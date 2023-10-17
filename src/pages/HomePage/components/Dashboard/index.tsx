@@ -3,14 +3,12 @@ import { instance } from "../../../../services/api";
 import { Character } from "../Character";
 import { DashboardContainer } from "./styles";
 import { useState, useEffect, useRef, useContext } from "react";
-import { IData } from "../../../../types/data";
 import Loading from "../../../../components/Loading";
-import { SearchCharacterContext } from "../../../../contexts/SearchCharacterContext";
+import { CharacterContext } from "../../../../contexts/CharacterContext";
 
 export const Dashboard: React.FC = () => {
-    const [data, setData] = useState<IData[]>([]);
     const [quotePerPage, setQuotePerPage] = useState(2);
-    const { dataSearch, isLoading, setIsLoading } = useContext(SearchCharacterContext);
+    const { data, setData, dataSearch, isLoading, setIsLoading } = useContext(CharacterContext);
 
     const looking = useRef<HTMLSpanElement>(null);
 
@@ -28,7 +26,7 @@ export const Dashboard: React.FC = () => {
         };
 
         HandleFetch();
-    }, [quotePerPage, setIsLoading]);
+    }, [quotePerPage, setIsLoading, setData]);
 
     useEffect(() => {
         const observer = new IntersectionObserver(observadora, {

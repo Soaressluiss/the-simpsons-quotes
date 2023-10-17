@@ -1,10 +1,10 @@
 import { useContext } from "react";
 import { ContainerSearch, ElipseBtn, Input } from "./styles";
 import { FaSearch } from "react-icons/fa";
-import { SearchCharacterContext } from "../../../../contexts/SearchCharacterContext";
+import { CharacterContext } from "../../../../contexts/CharacterContext";
 
 export const InputSeach: React.FC = () => {
-    const { searchCharacter, setSearchCharacter, HandleSearch } = useContext(SearchCharacterContext);
+    const { searchCharacter, setSearchCharacter, HandleSearch } = useContext(CharacterContext);
 
     return (
         <ContainerSearch onSubmit={HandleSearch}>

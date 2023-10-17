@@ -3,23 +3,26 @@ import React, { createContext, useState } from "react";
 import { instance } from "../services/api";
 import { IData } from "../types/data";
 
-interface ISearchProviderProps {
+interface ICharacterProviderProps {
     children: React.ReactNode;
 }
-interface ISearchProps {
+interface ICharacterProps {
+    data: IData[];
+    setData: React.Dispatch<React.SetStateAction<IData[]>>;
     searchCharacter: string;
     setSearchCharacter: React.Dispatch<React.SetStateAction<string>>;
     dataSearch: IData[];
     setDataSearch: React.Dispatch<React.SetStateAction<IData[]>>;
     isLoading: boolean;
     setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
-    HandleSearch: (e: React.FormEvent<HTMLFormElement>) => Promise<void>;
+    HandleSearch: (event: React.FormEvent<HTMLFormElement>) => Promise<void>;
 }
 
-export const SearchCharacterContext = createContext<ISearchProps>({} as ISearchProps);
-SearchCharacterContext.displayName = "search Context";
+export const CharacterContext = createContext<ICharacterProps>({} as ICharacterProps);
+CharacterContext.displayName = "Character Context";
 
-export const SearchCharacterProvider: React.FC<ISearchProviderProps> = ({ children }) => {
+export const CharacterProvider: React.FC<ICharacterProviderProps> = ({ children }) => {
+    const [data, setData] = useState<IData[]>([]);
     const [searchCharacter, setSearchCharacter] = useState<string>("");
     const [dataSearch, setDataSearch] = useState<IData[]>([]);
     const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -39,8 +42,10 @@ export const SearchCharacterProvider: React.FC<ISearchProviderProps> = ({ childr
     };
 
     return (
-        <SearchCharacterContext.Provider
+        <CharacterContext.Provider
             value={{
+                data,
+                setData,
                 searchCharacter,
                 setSearchCharacter,
                 dataSearch,
@@ -51,6 +56,6 @@ export const SearchCharacterProvider: React.FC<ISearchProviderProps> = ({ childr
             }}
         >
             {children}
-        </SearchCharacterContext.Provider>
+        </CharacterContext.Provider>
     );
 };
