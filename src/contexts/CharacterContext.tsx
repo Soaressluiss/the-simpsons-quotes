@@ -1,7 +1,7 @@
 import { AxiosError } from "axios";
 import React, { createContext, useState } from "react";
 import { instance } from "../services/api";
-import { IData } from "../types/data";
+import { ICharacterCliccked, IData } from "../types/interfaces";
 
 interface ICharacterProviderProps {
     children: React.ReactNode;
@@ -13,6 +13,8 @@ interface ICharacterProps {
     setSearchCharacter: React.Dispatch<React.SetStateAction<string>>;
     dataSearch: IData[];
     setDataSearch: React.Dispatch<React.SetStateAction<IData[]>>;
+    characterClicked: ICharacterCliccked;
+    setCharacterClicked: React.Dispatch<React.SetStateAction<ICharacterCliccked>>;
     isLoading: boolean;
     setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
     HandleSearch: (event: React.FormEvent<HTMLFormElement>) => Promise<void>;
@@ -25,6 +27,7 @@ export const CharacterProvider: React.FC<ICharacterProviderProps> = ({ children 
     const [data, setData] = useState<IData[]>([]);
     const [searchCharacter, setSearchCharacter] = useState<string>("");
     const [dataSearch, setDataSearch] = useState<IData[]>([]);
+    const [characterClicked, setCharacterClicked] = useState<ICharacterCliccked>({ id: 0, character: "", image: "" , quote: ""});
     const [isLoading, setIsLoading] = useState<boolean>(false);
 
     const HandleSearch = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -48,6 +51,8 @@ export const CharacterProvider: React.FC<ICharacterProviderProps> = ({ children 
                 setData,
                 searchCharacter,
                 setSearchCharacter,
+                characterClicked,
+                setCharacterClicked,
                 dataSearch,
                 setDataSearch,
                 isLoading,

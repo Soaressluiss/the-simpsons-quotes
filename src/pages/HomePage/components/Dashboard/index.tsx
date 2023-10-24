@@ -6,7 +6,10 @@ import { useState, useEffect, useRef, useContext } from "react";
 import Loading from "../../../../components/Loading";
 import { CharacterContext } from "../../../../contexts/CharacterContext";
 
-export const Dashboard: React.FC = () => {
+interface IDashboardProps {
+    setCloseModal: React.Dispatch<React.SetStateAction<boolean>>;
+}
+export const Dashboard: React.FC<IDashboardProps> = ({ setCloseModal }) => {
     const [quotePerPage, setQuotePerPage] = useState(2);
     const { data, setData, dataSearch, isLoading, setIsLoading } = useContext(CharacterContext);
 
@@ -49,9 +52,25 @@ export const Dashboard: React.FC = () => {
         <DashboardContainer>
             <section>
                 {dataSearch.length < 1
-                    ? data.map((item, id) => <Character key={id} image={item.image} character={item.character} />)
+                    ? data.map((item, id) => (
+                          <Character
+                              key={id}
+                              id={id}
+                              setCloseModal={setCloseModal}
+                              image={item.image}
+                              character={item.character}
+                              quote={item.quote}
+                          />
+                      ))
                     : dataSearch.map((item, id) => (
-                          <Character key={id} image={item.image} character={item.character} />
+                          <Character
+                              key={id}
+                              id={id}
+                              setCloseModal={setCloseModal}
+                              image={item.image}
+                              character={item.character}
+                              quote={item.quote}
+                          />
                       ))}
             </section>
             {isLoading && <Loading />}
