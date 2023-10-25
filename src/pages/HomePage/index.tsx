@@ -5,6 +5,7 @@ import { InputSeach } from "./components/InputSearch";
 import { Menu } from "./components/Menu";
 import { PopUpCharacter } from "./components/popUpCharacter";
 import { Container, LogoImage } from "./styles";
+import { PopUpFavorites } from "./components/popUpFavorites";
 
 export const HomePage: React.FC = () => {
     const [closeModal, setCloseModal] = useState<boolean>(false);
@@ -13,6 +14,7 @@ export const HomePage: React.FC = () => {
         <>
             <Container>
                 <PopUpCharacter closeModal={closeModal} setCloseModal={setCloseModal} />
+                <PopUpFavorites/>
                 <LogoImage src={Logo} alt="logo do site" />
                 <Menu />
                 <InputSeach />
