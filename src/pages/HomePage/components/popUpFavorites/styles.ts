@@ -1,19 +1,31 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
-export const PopUpFavoritesContainer = styled.section`
+type PopUpProps = {
+    $CloseFavorites: boolean;
+};
+
+const FadeUp = keyframes`
+    from { transform: scale(0); opacity: 0}
+    to { transform: scale(1); opacity: 1;}
+`;
+export const PopUpFavoritesContainer = styled.section<PopUpProps>`
     width: 60.5rem;
     height: max-content;
     padding: 2rem 0;
     border-radius: 2.5625rem;
     background: ${({ theme }) => theme.colors.greenMint};
     box-shadow: 16px 16px 2px 0px rgba(0, 0, 0, 0.25);
-    display: flex;
+    animation: ${FadeUp} 0.4s ease;
+    display: ${({ $CloseFavorites }) => ($CloseFavorites ? "flex" : "none")};
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 4.73rem;
     position: absolute;
     z-index: 999;
+    > img {
+        width: 250px;
+    }
     > button {
         position: absolute;
         top: -30px;
@@ -68,9 +80,10 @@ export const FavoriteQuote = styled.div`
         color: ${({ theme }) => theme.fonts.FColorPrimary};
         text-align: center;
         font-family: ${({ theme }) => theme.fonts.fontSecondary};
-        font-size: 1.5rem;
+        font-size: 1.3rem;
         font-weight: 700;
         letter-spacing: 0.105rem;
+        padding: 0.4rem;
     }
     > button {
         width: 2.75rem;
@@ -92,8 +105,8 @@ export const FavoriteQuote = styled.div`
             transform: scale(0.95);
         }
         &:hover {
-            transition: all .4s ease;
-            background-color: #FFE900;
+            transition: all 0.4s ease;
+            background-color: #ffe900;
         }
     }
 `;

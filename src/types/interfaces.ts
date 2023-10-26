@@ -10,3 +10,8 @@ export interface ICharacterCliccked {
     character: string;
     quote:string;
 }
+
+export interface IFavorite {
+    id: number;
+    quote: string;
+}

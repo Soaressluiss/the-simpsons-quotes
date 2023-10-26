@@ -9,14 +9,15 @@ import { PopUpFavorites } from "./components/popUpFavorites";
 
 export const HomePage: React.FC = () => {
     const [closeModal, setCloseModal] = useState<boolean>(false);
+    const [closeFavorites, setCloseFavorites] = useState<boolean>(false);
 
     return (
         <>
             <Container>
                 <PopUpCharacter closeModal={closeModal} setCloseModal={setCloseModal} />
-                <PopUpFavorites/>
+                <PopUpFavorites closeFavorites={closeFavorites} setCloseFavorites={setCloseFavorites} />
                 <LogoImage src={Logo} alt="logo do site" />
-                <Menu />
+                <Menu setCloseFavorites={setCloseFavorites} />
                 <InputSeach />
                 <Dashboard setCloseModal={setCloseModal} />
             </Container>
