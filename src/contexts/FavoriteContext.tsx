@@ -1,5 +1,6 @@
 import React, { createContext, useState } from "react";
 import { IFavorite } from "../types/interfaces";
+import { UseLocalStorage } from "../hooks/useLocalStorage";
 
 interface IFavoriteProviderProps {
     children: React.ReactNode;
@@ -14,7 +15,12 @@ export const FavoriteContext = createContext<IFavoriteContextProps>({} as IFavor
 FavoriteContext.displayName = "Favorite Context";
 
 export const FavoriteProvider: React.FC<IFavoriteProviderProps> = ({ children }) => {
-    const [favoriteData, setFavoriteData] = useState<IFavorite[]>([]);
+    const { getLocalStorage } = UseLocalStorage();
+
+    const getFavoritesQuotes = getLocalStorage("favorites");
+    const favoritesQuotes = (getFavoritesQuotes && JSON.parse(getFavoritesQuotes)) || [];
+
+    const [favoriteData, setFavoriteData] = useState<IFavorite[]>(favoritesQuotes);
 
     return <FavoriteContext.Provider value={{ favoriteData, setFavoriteData }}>{children}</FavoriteContext.Provider>;
 };

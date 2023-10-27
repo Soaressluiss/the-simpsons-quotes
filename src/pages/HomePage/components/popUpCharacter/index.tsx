@@ -3,6 +3,7 @@ import { BtnHeart, InfoHeart, PopUpCharacterContainer, PopUpCharacterContent, Po
 import { CharacterContext } from "../../../../contexts/CharacterContext";
 import { useContext } from "react";
 import { FavoriteContext } from "../../../../contexts/FavoriteContext";
+import { UseLocalStorage } from "../../../../hooks/useLocalStorage";
 
 type PopUpTypes = {
     closeModal: boolean;
@@ -14,11 +15,14 @@ export const PopUpCharacter: React.FC<PopUpTypes> = ({ setCloseModal, closeModal
 
     const { setFavoriteData, favoriteData } = useContext(FavoriteContext);
 
+    const { setLocalStorage } = UseLocalStorage();
+
     function handleAddFavorite(id: number) {
         const hasQuote = favoriteData.find((quote) => quote.id === id);
 
         if (!hasQuote) {
             setFavoriteData((previous) => [...previous, { id, quote }]);
+            setLocalStorage("favorites", JSON.stringify([...favoriteData, { id, quote }]));
         }
     }
 
