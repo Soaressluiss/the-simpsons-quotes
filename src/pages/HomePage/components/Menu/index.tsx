@@ -1,22 +1,28 @@
 import React, { useState } from "react";
 import { IconsMenu, NavBar } from "./styles";
 import { BsHouse, BsHeart, BsMusicNoteBeamed, BsMoon } from "react-icons/bs";
+import { SongController } from "../SongController";
 
 type MenuProps = {
     setCloseFavorites: React.Dispatch<React.SetStateAction<boolean>>;
 };
 export const Menu: React.FC<MenuProps> = ({ setCloseFavorites }) => {
     const [active, setActive] = useState("home");
+    const [showControllerSong, setShowControllerSong] = useState(false);
 
     function handleFavorites() {
         setActive("favorites");
         setCloseFavorites(true);
     }
+    function handleSong() {
+        setActive("music");
+        setShowControllerSong(!showControllerSong);
+    }
 
     const Icons = [
         { id: 0, title: "home", icon: <BsHouse />, onclick: () => setActive("home") },
         { id: 1, title: "favorites", icon: <BsHeart />, onclick: () => handleFavorites() },
-        { id: 2, title: "music", icon: <BsMusicNoteBeamed />, onclick: () => {} },
+        { id: 2, title: "music", icon: <BsMusicNoteBeamed />, onclick: () => handleSong() },
         { id: 3, title: "theme", icon: <BsMoon />, onclick: () => {} },
     ];
 
@@ -29,6 +35,7 @@ export const Menu: React.FC<MenuProps> = ({ setCloseFavorites }) => {
                     </IconsMenu>
                 ))}
             </ul>
+            {showControllerSong && <SongController />}
         </NavBar>
     );
 };
