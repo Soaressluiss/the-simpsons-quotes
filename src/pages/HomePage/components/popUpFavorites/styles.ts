@@ -26,33 +26,42 @@ export const PopUpFavoritesContainer = styled.section<PopUpProps>`
     > img {
         width: 250px;
     }
-    > button {
-        position: absolute;
-        top: -30px;
-        left: -30px;
-        width: 4.02225rem;
-        height: 4.07013rem;
-        background-color: ${({ theme }) => theme.colors.secondary};
-        box-shadow: -4px -8px 8px 0px rgba(0, 0, 0, 0.25) inset;
-        border-radius: 50%;
-        outline: none;
-        display: grid;
-        place-items: center;
-        font-size: 3rem;
-        color: ${({ theme }) => theme.fonts.FColorPrimary};
-        cursor: pointer;
-        border: none;
-        &:active {
-            transition: all 0.4s ease;
-            transform: scale(0.95);
-            font-size: 1.9rem;
-        }
-        &:focus {
-            outline: 2px ${({ theme }) => theme.colors.grayPlatinum} solid;
-        }
+`;
+
+export const ButtonCLose = styled.button`
+    position: absolute;
+    top: -30px;
+    left: -30px;
+    width: 4.02225rem;
+    height: 4.07013rem;
+    background-color: ${({ theme }) => theme.colors.secondary};
+    box-shadow: -4px -8px 8px 0px rgba(0, 0, 0, 0.25) inset;
+    border-radius: 50%;
+    outline: none;
+    display: grid;
+    place-items: center;
+    font-size: 3rem;
+    color: ${({ theme }) => theme.fonts.FColorPrimary};
+    cursor: pointer;
+    border: none;
+    &:active {
+        transition: all 0.4s ease;
+        transform: scale(0.95);
+        font-size: 1.9rem;
+    }
+    &:focus {
+        outline: 2px ${({ theme }) => theme.colors.grayPlatinum} solid;
+    }
+    &:hover {
+        transition: all 0.4s ease;
+        background-color: #ffe900;
     }
 `;
 
+export const ButtonDeleteAll = styled(ButtonCLose)`
+    font-size: 1.6rem;
+    left: 50px;
+`;
 export const FavoriteQuoteContainer = styled.div`
     width: 52.44556rem;
     height: max-content;
