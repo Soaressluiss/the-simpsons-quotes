@@ -51,3 +51,11 @@ export const IconSong = styled.li<IIconProps>`
         transition: all .4s ease;
     }
 `;
+
+export const Audio = styled.audio`
+    position: absolute;
+    width: 1px;
+    z-index: -1;
+    opacity: 0;
+    pointer-events: none;
+`
