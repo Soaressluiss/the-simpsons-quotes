@@ -52,10 +52,6 @@ export const ButtonCLose = styled.button`
     &:focus {
         outline: 2px ${({ theme }) => theme.colors.grayPlatinum} solid;
     }
-    &:hover {
-        transition: all 0.4s ease;
-        background-color: #ffe900;
-    }
 `;
 
 export const ButtonDeleteAll = styled(ButtonCLose)`
@@ -112,10 +108,6 @@ export const FavoriteQuote = styled.div`
         &:active {
             transition: transform 0.4s ease;
             transform: scale(0.95);
-        }
-        &:hover {
-            transition: all 0.4s ease;
-            background-color: #ffe900;
         }
     }
 `;

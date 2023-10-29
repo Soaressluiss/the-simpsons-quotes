@@ -18,6 +18,7 @@ export const Input = styled.input`
     padding: 1rem;
     font-size: 1.75rem;
     font-family: ${({ theme }) => theme.fonts.fontPrimary};
+    color: ${({ theme }) => theme.fonts.FColorPrimary};
     &:focus {
         outline: 3px ${({ theme }) => theme.colors.secondary} solid;
     }

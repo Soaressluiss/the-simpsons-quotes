@@ -2,6 +2,7 @@ import { AxiosError } from "axios";
 import React, { createContext, useState } from "react";
 import { instance } from "../services/api";
 import { ICharacterCliccked, IData } from "../types/interfaces";
+import light from "../styles/themes/light";
 
 interface ICharacterProviderProps {
     children: React.ReactNode;
@@ -18,6 +19,40 @@ interface ICharacterProps {
     isLoading: boolean;
     setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
     HandleSearch: (event: React.FormEvent<HTMLFormElement>) => Promise<void>;
+    currentTheme: {
+        name: string;
+
+        colors: {
+            primary: string;
+            secondary: string;
+            greenMint: string;
+            teaRose: string;
+            grayPlatinum: string;
+        };
+        fonts: {
+            FColorPrimary: string;
+            fontPrimary: string;
+            fontSecondary: string;
+        };
+    };
+    setCurrentTheme: React.Dispatch<
+        React.SetStateAction<{
+            name: string;
+
+            colors: {
+                primary: string;
+                secondary: string;
+                greenMint: string;
+                teaRose: string;
+                grayPlatinum: string;
+            };
+            fonts: {
+                FColorPrimary: string;
+                fontPrimary: string;
+                fontSecondary: string;
+            };
+        }>
+    >;
 }
 
 export const CharacterContext = createContext<ICharacterProps>({} as ICharacterProps);
@@ -27,8 +62,14 @@ export const CharacterProvider: React.FC<ICharacterProviderProps> = ({ children 
     const [data, setData] = useState<IData[]>([]);
     const [searchCharacter, setSearchCharacter] = useState<string>("");
     const [dataSearch, setDataSearch] = useState<IData[]>([]);
-    const [characterClicked, setCharacterClicked] = useState<ICharacterCliccked>({ id: 0, character: "", image: "" , quote: ""});
+    const [characterClicked, setCharacterClicked] = useState<ICharacterCliccked>({
+        id: 0,
+        character: "",
+        image: "",
+        quote: "",
+    });
     const [isLoading, setIsLoading] = useState<boolean>(false);
+    const [currentTheme, setCurrentTheme] = useState(light);
 
     const HandleSearch = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -58,6 +99,8 @@ export const CharacterProvider: React.FC<ICharacterProviderProps> = ({ children 
                 isLoading,
                 setIsLoading,
                 HandleSearch,
+                currentTheme,
+                setCurrentTheme,
             }}
         >
             {children}

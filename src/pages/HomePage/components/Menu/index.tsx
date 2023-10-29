@@ -1,7 +1,10 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { IconsMenu, NavBar } from "./styles";
-import { BsHouse, BsHeart, BsMusicNoteBeamed, BsMoon } from "react-icons/bs";
+import { BsHouse, BsHeart, BsMusicNoteBeamed, BsMoon, BsSun } from "react-icons/bs";
 import { SongController } from "../SongController";
+import dark from "../../../../styles/themes/dark";
+import light from "../../../../styles/themes/light";
+import { CharacterContext } from "../../../../contexts/CharacterContext";
 
 type MenuProps = {
     setCloseFavorites: React.Dispatch<React.SetStateAction<boolean>>;
@@ -22,12 +25,22 @@ export const Menu: React.FC<MenuProps> = ({ setCloseFavorites }) => {
         setActive("Music");
         setShowControllerSong(!showControllerSong);
     }
+    const { setCurrentTheme, currentTheme } = useContext(CharacterContext);
+
+    function handleTheme() {
+        currentTheme.name === "light" ? setCurrentTheme(dark) : setCurrentTheme(light);
+    }
 
     const Icons = [
         { id: 0, title: "Home", icon: <BsHouse />, onclick: () => handleHome() },
         { id: 1, title: "Favorites", icon: <BsHeart />, onclick: () => handleFavorites() },
         { id: 2, title: "Music", icon: <BsMusicNoteBeamed />, onclick: () => handleSong() },
-        { id: 3, title: "Theme", icon: <BsMoon />, onclick: () => {} },
+        {
+            id: 3,
+            title: "Theme",
+            icon: currentTheme.name === "light" ? <BsSun /> : <BsMoon />,
+            onclick: () => handleTheme(),
+        },
     ];
 
     return (
