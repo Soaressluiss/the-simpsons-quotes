@@ -3,6 +3,7 @@ import React, { createContext, useState } from "react";
 import { instance } from "../services/api";
 import { ICharacterCliccked, IData } from "../types/interfaces";
 import light from "../styles/themes/light";
+import { UseLocalStorage } from "../hooks/useLocalStorage";
 
 interface ICharacterProviderProps {
     children: React.ReactNode;
@@ -69,7 +70,13 @@ export const CharacterProvider: React.FC<ICharacterProviderProps> = ({ children 
         quote: "",
     });
     const [isLoading, setIsLoading] = useState<boolean>(false);
-    const [currentTheme, setCurrentTheme] = useState(light);
+
+    const { getLocalStorage } = UseLocalStorage();
+    
+    const getTheme = getLocalStorage("theme");
+    const getCurrentTheme = (getTheme && JSON.parse(getTheme)) || light;
+
+    const [currentTheme, setCurrentTheme] = useState(getCurrentTheme);
 
     const HandleSearch = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();

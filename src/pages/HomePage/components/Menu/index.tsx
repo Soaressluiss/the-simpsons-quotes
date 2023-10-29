@@ -5,6 +5,7 @@ import { SongController } from "../SongController";
 import dark from "../../../../styles/themes/dark";
 import light from "../../../../styles/themes/light";
 import { CharacterContext } from "../../../../contexts/CharacterContext";
+import { UseLocalStorage } from "../../../../hooks/useLocalStorage";
 
 type MenuProps = {
     setCloseFavorites: React.Dispatch<React.SetStateAction<boolean>>;
@@ -12,6 +13,7 @@ type MenuProps = {
 export const Menu: React.FC<MenuProps> = ({ setCloseFavorites }) => {
     const [active, setActive] = useState("Home");
     const [showControllerSong, setShowControllerSong] = useState(false);
+    const { setLocalStorage } = UseLocalStorage();
 
     function handleHome() {
         window.location.reload();
@@ -28,7 +30,11 @@ export const Menu: React.FC<MenuProps> = ({ setCloseFavorites }) => {
     const { setCurrentTheme, currentTheme } = useContext(CharacterContext);
 
     function handleTheme() {
-        currentTheme.name === "light" ? setCurrentTheme(dark) : setCurrentTheme(light);
+        setCurrentTheme((prevTheme) => {
+            const newTheme = prevTheme.name === "light" ? dark : light;
+            setLocalStorage("theme", JSON.stringify(newTheme));
+            return newTheme;
+        });
     }
 
     const Icons = [
