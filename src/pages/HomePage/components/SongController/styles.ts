@@ -1,4 +1,5 @@
 import styled, { keyframes } from "styled-components";
+import { media } from "../../../../styles/customMediaQuery";
 
 interface IIconProps {
     $isActive: string | boolean;
@@ -9,11 +10,11 @@ export const fadeUp = keyframes`
 `;
 export const SongContainer = styled.section`
     background-color: ${({ theme }) => theme.colors.secondary};
-    width: 200px;
-    height: 70px;
+    width: 150px;
+    height: 50px;
     position: absolute;
-    right: 100px;
-    bottom: 110px;
+    right: 70px;
+    bottom: 85px;
     border-radius: 5px;
     display: grid;
     place-items: center;
@@ -22,12 +23,20 @@ export const SongContainer = styled.section`
         content: "";
         display: block;
         position: absolute;
-        top: 70px;
-        right: 60px;
-        border-width: 20px;
+        top: 50px;
+        right: 45px;
+        border-width: 15px;
         border-style: solid;
         border-color: ${({ theme }) => theme.colors.secondary} transparent transparent transparent;
         transform: translateX(-50%);
+    }
+
+    ${media.tablet} {
+        right: 55px;
+        bottom: 70px;
+    }
+    ${media.mobile} {
+        right: 20px;
     }
     > ul {
         display: flex;
@@ -39,7 +48,7 @@ export const SongContainer = styled.section`
 `;
 
 export const IconSong = styled.li<IIconProps>`
-    font-size: 2rem;
+    font-size: 1.5rem;
     cursor: pointer;
     color: ${({ theme }) => theme.fonts.FColorPrimary};
     background-color: ${({ $isActive }) => ($isActive ? "#00ADEF" : "transparent")};
@@ -48,7 +57,7 @@ export const IconSong = styled.li<IIconProps>`
     border-radius: 50%;
     &:hover {
         background-color: ${({ theme }) => theme.colors.primary};
-        transition: all .4s ease;
+        transition: all 0.4s ease;
     }
 `;
 
@@ -58,4 +67,4 @@ export const Audio = styled.audio`
     z-index: -1;
     opacity: 0;
     pointer-events: none;
-`
+`;

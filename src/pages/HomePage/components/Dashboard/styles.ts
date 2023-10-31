@@ -1,10 +1,11 @@
 import styled from "styled-components";
+import { media } from "../../../../styles/customMediaQuery";
 
 export const DashboardContainer = styled.section`
-    width: 100%;
+    width: 95%;
     height: max-content;
     padding: 3rem 0;
-    margin-top: 86px;
+    margin-top: 70px;
     margin-bottom: 50px;
     border-radius: 31px;
     background-color: ${({ theme }) => theme.colors.secondary};
@@ -13,13 +14,30 @@ export const DashboardContainer = styled.section`
     flex-direction: column;
     align-items: center;
     justify-content: center;
+
+    ${media.tablet}{
+        width: 80%;
+    }
     > section {
         display: flex;
-        width: 1023px;
         justify-content: center;
         align-items: center;
         align-content: center;
-        gap: 32px 48px;
         flex-wrap: wrap;
+        flex-direction: row; 
+        gap: 32px;
+
+        ${media.tablet}{
+            width: max-content;
+            display: grid;
+            grid-row-gap: 2rem;
+            grid-column-gap: 3rem;
+            grid-template-columns: 1fr 1fr;  
+            gap: 2rem;
+        }
+
+        ${media.mobile}{
+            grid-template-columns: 1fr;
+        }
     }
 `;

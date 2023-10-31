@@ -1,4 +1,5 @@
 import styled, { keyframes } from "styled-components";
+import { media } from "../../../../styles/customMediaQuery";
 
 type PopUpProps = {
     $CloseModal: boolean;
@@ -8,50 +9,70 @@ const FadeUp = keyframes`
     from { transform: scale(0); opacity: 0}
     to { transform: scale(1); opacity: 1;}
 `;
+
 export const PopUpCharacterContainer = styled.section<PopUpProps>`
-    display: ${({ $CloseModal }) => ($CloseModal ? "grid" : "none")};
-    width: 100%;
-    height: ${`${window.innerHeight}vw`};
-    background-color: rgba(0, 0, 0, 0.41);
-    place-items: center;
-    position: absolute;
-    z-index: 999;
-`;
-export const PopUpCharacterContent = styled.section`
     transition: transform 0.3s;
     animation: ${FadeUp} 0.4s ease;
-    width: 56.5rem;
-    height: 33rem;
+    width: 36.5rem;
+    height: 26rem;
     border-radius: 1.875rem;
     border: 1px solid rgba(0, 0, 0, 0.41);
     background: ${({ theme }) => theme.colors.greenMint};
     box-shadow: 10px 10px 15px 0px rgba(0, 0, 0, 0.25);
-    display: flex;
+    display: ${({ $CloseModal }) => ($CloseModal ? "flex" : "none")};
     align-items: center;
     justify-content: space-evenly;
     position: absolute;
     z-index: 20;
+
+    ${media.tablet} {
+        width: 20rem;
+        height: max-content;
+        flex-direction: column;
+    }
+    ${media.mobile} {
+        width: 15rem;
+        border-radius: 1rem;
+    }
+
     > section {
         display: grid;
         place-items: center;
+        width: 50%;
+
         > img {
-            width: 16.6875rem;
-            height: 27.375rem;
+            width: 11.6875rem;
+            height: 20.375rem;
+            ${media.tablet} {
+                width: 10.8125rem;
+                height: 16.75rem;
+                margin-bottom: 1rem;
+            }
+            ${media.mobile} {
+                width: 10rem;
+                height: 16rem;
+                margin: 0;
+            }
+        }
+
+        ${media.tablet} {
+            width: 100%;
+            padding: 1rem;
         }
     }
     > button {
         position: absolute;
-        top: -30px;
-        left: -30px;
-        width: 4.02225rem;
-        height: 4.07013rem;
+        top: -15px;
+        left: -15px;
+        width: 2.4rem;
+        height: 2.4rem;
         background-color: ${({ theme }) => theme.colors.secondary};
         box-shadow: -4px -8px 8px 0px rgba(0, 0, 0, 0.25) inset;
         border-radius: 50%;
         outline: none;
         display: grid;
         place-items: center;
-        font-size: 3rem;
+        font-size: 2rem;
         color: ${({ theme }) => theme.fonts.FColorPrimary};
         cursor: pointer;
         border: none;
@@ -63,76 +84,141 @@ export const PopUpCharacterContent = styled.section`
         &:focus {
             outline: 2px ${({ theme }) => theme.colors.grayPlatinum} solid;
         }
+        ${media.mobile} {
+            width: 46px;
+            height: 46px;
+            font-size: 2rem;
+            top: -15px;
+            left: -15px;
+        }
     }
 `;
 
 export const PopUpCharacterInfo = styled.section`
-    width: 29.875rem;
-    height: max-content;
-    margin-left: 8rem;
+    height: 100%;
     border-radius: 0.0625rem 1.875rem 1.875rem 0.0625rem;
     background: ${({ theme }) => theme.colors.teaRose};
     box-shadow: 10px 10px 15px 0px rgba(0, 0, 0, 0.25);
     display: grid;
     place-items: center;
+    padding: 1rem;
+
+    ${media.tablet} {
+        border-radius: 0 0 1.875rem 1.875rem;
+    }
+    ${media.mobile} {
+        border-radius: 0 0 1rem 1rem;
+    }
+
     > article {
-        width: 19.49131rem;
-        height: 33rem;
+        height: max-content;
+        width: 100%;
         display: flex;
         flex-direction: column;
         justify-content: center;
-        gap: 2.5rem;
+        align-items: center;
+        gap: 1rem;
 
+        ${media.tablet} {
+            width: 100%;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        ${media.mobile} {
+            width: 100%;
+        }
         > span {
-            width: inherit;
+            width: 80%;
             padding: 1rem;
             border-radius: 10px;
             background-color: ${({ theme }) => theme.colors.secondary};
             box-shadow: 0px -1px 11px 0px rgba(0, 0, 0, 0.25) inset;
             filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 
+            ${media.tablet} {
+                width: 90%;
+                gap: 0rem;
+            }
+            ${media.mobile} {
+                padding: 0.6rem;
+                border-radius: 5px;
+            }
+
             > h2 {
                 color: ${({ theme }) => theme.fonts.FColorPrimary};
                 text-align: center;
                 font-family: ${({ theme }) => theme.fonts.fontPrimary};
-                font-size: 1.425rem;
+                font-size: 1rem;
                 font-weight: 700;
-                line-height: normal;
                 letter-spacing: 0.195rem;
+                hyphens: auto;
+                overflow-wrap: break-word;
+
+                ${media.mobile} {
+                    font-size: 0.7rem;
+                    letter-spacing: 2.88px;
+                }
             }
         }
         > div {
-            width: 19.49131rem;
+            width: 80%;
             height: max-content;
-            gap: 2rem;
+            gap: 1rem;
             padding-bottom: 2.44rem;
             border-radius: 1.25rem;
             background: ${({ theme }) => theme.colors.grayPlatinum};
             filter: drop-shadow(9px 8px 7px rgba(0, 0, 0, 0.25));
             display: grid;
+            place-items: center;
+
+            ${media.tablet} {
+                width: 90%;
+                gap: 1rem;
+            }
+            ${media.mobile} {
+                border-radius: 0.8rem;
+            }
+
             > span {
-                width: inherit;
-                height: 3.16563rem;
+                width: 100%;
+                height: 2.16563rem;
                 border-radius: 1.3rem 1.25rem 0rem 0rem;
                 background: ${({ theme }) => theme.colors.secondary};
-                text-align: center;
+                display: grid;
+                place-items: center;
+
+                ${media.mobile} {
+                    display: grid;
+                    place-items: center;
+                    border-radius: 0.8rem 0.8rem 0rem 0rem;
+                }
                 > h3 {
                     color: ${({ theme }) => theme.fonts.FColorPrimary};
                     text-align: center;
                     font-family: ${({ theme }) => theme.fonts.fontPrimary};
-                    font-size: 2rem;
+                    font-size: 1rem;
                     font-weight: 700;
                     letter-spacing: 0.24rem;
+
+                    ${media.mobile} {
+                        font-size: 1rem;
+                        letter-spacing: 2.88px;
+                    }
                 }
             }
             p {
                 color: ${({ theme }) => theme.fonts.FColorPrimary};
                 text-align: center;
                 font-family: ${({ theme }) => theme.fonts.fontSecondary};
-                font-size: 1.375rem;
+                font-size: 0.92rem;
                 font-weight: 400;
                 letter-spacing: 0.16875rem;
                 width: inherit;
+                ${media.mobile} {
+                    font-size: 0.8rem;
+                    letter-spacing: 2.16px;
+                }
             }
         }
     }
@@ -140,26 +226,26 @@ export const PopUpCharacterInfo = styled.section`
 export const InfoHeart = styled.aside`
     display: none;
     position: absolute;
-    width: 10.40569rem;
-    bottom: 30px;
-    padding: 1rem 0;
-    right: 120px;
+    width: 8.40569rem;
+    bottom: 11px;
+    padding: 0.5rem 0;
+    right: 80px;
     border-radius: 5px;
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
     background-color: ${({ theme }) => theme.colors.greenMint};
-    color: #333;
+    color: ${({ theme }) => theme.fonts.FColorPrimary};
     text-align: center;
     font-family: ${({ theme }) => theme.fonts.fontPrimary};
-    font-size: 0.875rem;
+    font-size: 0.775rem;
     font-weight: 700;
     letter-spacing: 0.07875rem;
     &::before {
         content: "";
         display: block;
         position: absolute;
-        top: 10px;
-        right: -60px;
-        border-width: 20px;
+        right: -55px;
+        top: 0px;
+        border-width: 19px;
         border-style: solid;
         border-color: transparent transparent transparent ${({ theme }) => theme.colors.greenMint};
         transform: translateX(-50%);
@@ -167,11 +253,11 @@ export const InfoHeart = styled.aside`
 `;
 
 export const BtnHeart = styled.button`
-    width: 4.02225rem;
-    height: 4.07013rem;
+    width: 2.4rem;
+    height: 2.4rem;
     position: absolute;
-    bottom: 20px;
-    right: 20px;
+    bottom: 10px;
+    right: 10px;
     display: block;
     background-color: ${({ theme }) => theme.colors.secondary};
     box-shadow: -4px -8px 8px 0px rgba(0, 0, 0, 0.25) inset;
@@ -179,7 +265,7 @@ export const BtnHeart = styled.button`
     outline: none;
     display: grid;
     place-items: center;
-    font-size: 2rem;
+    font-size: 1rem;
     color: ${({ theme }) => theme.fonts.FColorPrimary};
     cursor: pointer;
     border: none;
@@ -193,5 +279,10 @@ export const BtnHeart = styled.button`
     }
     &:hover + ${InfoHeart} {
         display: block;
+    }
+    ${media.mobile} {
+        width: 46px;
+        height: 43.7px;
+        font-size: 0.7rem;
     }
 `;

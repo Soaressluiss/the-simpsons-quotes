@@ -33,6 +33,7 @@ export const Menu: React.FC<MenuProps> = ({ setCloseFavorites }) => {
         setCurrentTheme((prevTheme) => {
             const newTheme = prevTheme.name === "light" ? dark : light;
             setLocalStorage("theme", JSON.stringify(newTheme));
+            setActive("Theme");
             return newTheme;
         });
     }

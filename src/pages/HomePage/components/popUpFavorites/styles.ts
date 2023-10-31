@@ -1,4 +1,5 @@
 import styled, { keyframes } from "styled-components";
+import { media } from "../../../../styles/customMediaQuery";
 
 type PopUpProps = {
     $CloseFavorites: boolean;
@@ -9,38 +10,51 @@ const FadeUp = keyframes`
     to { transform: scale(1); opacity: 1;}
 `;
 export const PopUpFavoritesContainer = styled.section<PopUpProps>`
-    width: 60.5rem;
+    width: 36.5rem;
     height: max-content;
     padding: 2rem 0;
-    border-radius: 2.5625rem;
+    border-radius: 1.5625rem;
     background: ${({ theme }) => theme.colors.greenMint};
-    box-shadow: 16px 16px 2px 0px rgba(0, 0, 0, 0.25);
+    box-shadow: 10px 10px 2px 0px rgba(0, 0, 0, 0.25);
     animation: ${FadeUp} 0.4s ease;
     display: ${({ $CloseFavorites }) => ($CloseFavorites ? "flex" : "none")};
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    gap: 4.73rem;
+    gap: 2.73rem;
     position: absolute;
     z-index: 999;
     > img {
         width: 250px;
+
+        ${media.tablet} {
+            width: 200px;
+        }
+        ${media.mobile} {
+            width: 150px;
+        }
+    }
+    ${media.tablet} {
+        width: 20rem;
+        place-items: center;
+    }
+    ${media.mobile} {
+        width: 15rem;
     }
 `;
 
 export const ButtonCLose = styled.button`
     position: absolute;
-    top: -30px;
-    left: -30px;
-    width: 4.02225rem;
-    height: 4.07013rem;
+    top: -15px;
+    left: -10px;
+    width: 2.4rem;
+    height: 2.4rem;
     background-color: ${({ theme }) => theme.colors.secondary};
     box-shadow: -4px -8px 8px 0px rgba(0, 0, 0, 0.25) inset;
     border-radius: 50%;
     outline: none;
     display: grid;
     place-items: center;
-    font-size: 3rem;
+    font-size: 2rem;
     color: ${({ theme }) => theme.fonts.FColorPrimary};
     cursor: pointer;
     border: none;
@@ -55,44 +69,49 @@ export const ButtonCLose = styled.button`
 `;
 
 export const ButtonDeleteAll = styled(ButtonCLose)`
-    font-size: 1.6rem;
-    left: 50px;
+    font-size: 1.2rem;
+    left: 40px;
 `;
 export const FavoriteQuoteContainer = styled.div`
-    width: 52.44556rem;
     height: max-content;
-    display: flex;
-    flex-flow: row wrap;
-    gap: 2.73rem;
-    align-items: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+
+    ${media.tablet} {
+        grid-template-columns: 1fr;
+    }
 `;
 
 export const FavoriteQuote = styled.div`
-    width: 24.50506rem;
-    height: 8.41569rem;
+    width: 16rem;
+    height: 6.4rem;
     border-radius: 0.875rem;
     border: 1px solid ${({ theme }) => theme.fonts.FColorPrimary};
     background: ${({ theme }) => theme.colors.teaRose};
     display: grid;
     place-items: center;
     position: relative;
+    ${media.mobile} {
+        width: 12rem;
+    }
+
     > h3 {
         display: flex;
-        width: 23.06963rem;
         height: max-content;
         flex-direction: column;
         justify-content: center;
         color: ${({ theme }) => theme.fonts.FColorPrimary};
         text-align: center;
         font-family: ${({ theme }) => theme.fonts.fontSecondary};
-        font-size: 1.3rem;
+        font-size: 0.8rem;
         font-weight: 700;
         letter-spacing: 0.105rem;
         padding: 0.4rem;
     }
     > button {
-        width: 2.75rem;
-        height: 2.875rem;
+        width: 2.4rem;
+        height: 2.4rem;
         background-color: ${({ theme }) => theme.colors.secondary};
         box-shadow: -1px 0px 10px 0px rgba(0, 0, 0, 0.36) inset;
         border: none;
@@ -104,7 +123,8 @@ export const FavoriteQuote = styled.div`
         place-items: center;
         position: absolute;
         top: -15px;
-        right: -15px;
+        right: -17px;
+        font-size: 1rem;
         &:active {
             transition: transform 0.4s ease;
             transform: scale(0.95);
