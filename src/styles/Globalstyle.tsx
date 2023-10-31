@@ -11,6 +11,15 @@ export const GlobalStyle = createGlobalStyle`
         background-color: ${({ theme }) => theme.colors.primary};
         font-family: sans-serif;
         color: ${({ theme }) => theme.fonts.FColorPrimary};
+        scroll-behavior: smooth;
+
+        &::-webkit-scrollbar {
+            width:10px;
+        }
+        &::-webkit-scrollbar-thumb {
+            border-radius: 10px;
+            background-color:  ${({ theme }) => theme.colors.secondary};
+        }
     }
     img {
         max-width: 100%;
