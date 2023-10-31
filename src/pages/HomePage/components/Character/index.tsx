@@ -22,7 +22,7 @@ export const Character: React.FC<ICharacter> = ({ id, image, character, quote, s
     }
 
     return (
-        <CharacterContainer tabIndex={3}>
+        <CharacterContainer>
             <img
                 src={image}
                 alt={character}

@@ -20,6 +20,7 @@ export const Container = styled.main`
 export const LogoImage = styled.img`
     display: flex;
     width: 250px;
+    height: 84px;
     margin-top: 28px;
     margin-bottom: 36px;
 `;

@@ -14,11 +14,10 @@ export const InputSeach: React.FC = () => {
                 value={searchCharacter}
                 required
                 minLength={3}
-                tabIndex={1}
                 placeholder="ex: Homer Simpsons"
                 onChange={({ target }) => setSearchCharacter(target.value)}
             />
-            <ElipseBtn tabIndex={2}>
+            <ElipseBtn aria-label="button search">
                 <FaSearch />
             </ElipseBtn>
         </ContainerSearch>
