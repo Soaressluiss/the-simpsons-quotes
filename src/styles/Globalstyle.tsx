@@ -12,6 +12,7 @@ export const GlobalStyle = createGlobalStyle`
         font-family: sans-serif;
         color: ${({ theme }) => theme.fonts.FColorPrimary};
         scroll-behavior: smooth;
+        overflow-x: hidden;
 
         &::-webkit-scrollbar {
             width:10px;
