@@ -16,21 +16,21 @@
 
 ## Tópicos:
 
--   [Deploy](#🌐-deploy)
--   [Descrição](#📃-descrição)
--   [Funcionalidades](#⚙-funcionalidades)
--   [Tecnologias utilizadas](#👨‍💻-tecnologias-utilizadas)
--   [Inicie localmente o Projeto](#💻-inicie-localmente)
--   [Gif demostrativo](#📽-gif-demostrativo)
--   [Como contribuir](#♻️-como-contribuir)
+-   [Deploy](#deploy)
+-   [Descrição](#descrição)
+-   [Funcionalidades](#funcionalidades)
+-   [Tecnologias utilizadas](#tecnologias-utilizadas)
+-   [Inicie localmente o Projeto](#inicie-localmente)
+-   [Gif demostrativo](#gif-demostrativo)
+-   [Como contribuir](#como-contribuir)
 
-## 🌐 Deploy:
+## Deploy:
 
 > [The Simpsons quotes 🍩👨‍🦲](https://the-simpsons-quotes-soaressluiss.vercel.app)
 
 <hr>
 
-## 📃 Descrição:
+## Descrição:
 
 O projeto consiste em uma dashboard que exibe citações das personagens do famoso desenho norte-americano "[Os Simpsons](https://www.adorocinema.com/series/serie-290/)".
 
@@ -44,7 +44,7 @@ Foi desenvolvido com o objetivo de aprimorar o conhecimento em tecnologias como 
 
 <hr>
 
-## ⚙ Funcionalidades:
+## Funcionalidades:
 
 -   Screen loading inicial;
 -   Temas light e dark (salvo em LocalStorage);
@@ -61,7 +61,7 @@ Foi desenvolvido com o objetivo de aprimorar o conhecimento em tecnologias como 
 </div>
 <hr>
 
-## 👨‍💻 Tecnologias utilizadas:
+## Tecnologias utilizadas:
 
 | Tecnologias | Ícones |
 | :---------: | :----: |
@@ -82,7 +82,7 @@ Foi desenvolvido com o objetivo de aprimorar o conhecimento em tecnologias como 
 
 </div>
 
-## 💻 Inicie localmente:
+## Inicie localmente:
 
 Primeiro certifique=se de ter o [Node](https://nodejs.org/en) instalado em sua máquina. 
 
@@ -117,11 +117,21 @@ npm run dev
 
 </div>
 
-## 📽 Gif demostrativo:
+<hr>
+
+## Gif demostrativo:
 
 ![animation](./src/assets/GifAnimado.gif)
 
-## ♻️ Como contribuir:
+<div align="right">
+
+[Topo](#tópicos)
+
+</div>
+
+<hr>
+
+## Como contribuir:
 
 -   Faça um Fork desse repositório.
 
