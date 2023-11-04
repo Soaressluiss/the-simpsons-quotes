@@ -49,6 +49,7 @@ Foi desenvolvido com o objetivo de aprimorar o conhecimento em tecnologias como 
 -   Screen loading inicial;
 -   Temas light e dark (salvo em LocalStorage);
 -   Salvar citações (as citações salvas, ficam guardadas no LocalStorage do browser);
+-   Scroll Infinito para o carregamento de mais quotes;
 -   Animações;
 -   Buscar personagens por nome;
 -   Página de Error 404 personalizada (caso o usuário acesse uma rota diferente de `/`);
@@ -84,7 +85,7 @@ Foi desenvolvido com o objetivo de aprimorar o conhecimento em tecnologias como 
 
 ## Inicie localmente:
 
-Primeiro certifique=se de ter o [Node](https://nodejs.org/en) instalado em sua máquina. 
+Primeiro certifique-se de ter o [Node](https://nodejs.org/en) instalado em sua máquina. 
 
 <hr>
 
