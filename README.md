@@ -51,6 +51,7 @@ Foi desenvolvido com o objetivo de aprimorar o conhecimento em tecnologias como 
 -   Salvar citações (as citações salvas, ficam guardadas no LocalStorage do browser);
 -   Scroll Infinito para o carregamento de mais quotes;
 -   Animações;
+-   Controle de som (play, pause, vol+, vol-);
 -   Buscar personagens por nome;
 -   Página de Error 404 personalizada (caso o usuário acesse uma rota diferente de `/`);
 -   SEO - (Search Engine Optimization (otimização para mecanismos de busca));
