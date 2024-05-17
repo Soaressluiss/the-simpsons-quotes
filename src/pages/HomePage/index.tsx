@@ -20,9 +20,9 @@ export const HomePage: React.FC = () => {
     return (
         <>
             <LoadingScreen hideLoading={hideLoading} />
+            <PopUpCharacter closeModal={closeModal} setCloseModal={setCloseModal} />
+            <PopUpFavorites closeFavorites={closeFavorites} setCloseFavorites={setCloseFavorites} />
             <Container>
-                <PopUpCharacter closeModal={closeModal} setCloseModal={setCloseModal} />
-                <PopUpFavorites closeFavorites={closeFavorites} setCloseFavorites={setCloseFavorites} />
                 <LogoImage src={Logo} alt="logo do site" />
                 <Menu setCloseFavorites={setCloseFavorites} />
                 <InputSeach />

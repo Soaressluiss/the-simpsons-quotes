@@ -1,5 +1,5 @@
 import { AxiosError } from "axios";
-import { instance } from "../../../../services/api";
+import { api } from "../../../../services/api";
 import { Character } from "../Character";
 import { DashboardContainer } from "./styles";
 import { useState, useEffect, useRef, useContext } from "react";
@@ -19,7 +19,7 @@ export const Dashboard: React.FC<IDashboardProps> = ({ setCloseModal }) => {
         const HandleFetch = async () => {
             try {
                 setIsLoading(true);
-                const response = await instance.get(`?count=${quotePerPage}`);
+                const response = await api.get(`?count=${quotePerPage}`);
                 setData((prevData) => [...prevData, ...response.data]);
                 setIsLoading(false);
             } catch (err) {

@@ -9,7 +9,18 @@ const FadeUp = keyframes`
     from { transform: scale(0); opacity: 0}
     to { transform: scale(1); opacity: 1;}
 `;
-export const PopUpFavoritesContainer = styled.section<PopUpProps>`
+
+export const ModalBackground = styled.div<PopUpProps>`
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: ${({ $CloseFavorites }) => ($CloseFavorites ? "flex" : "none")};
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+`;
+
+export const PopUpFavoritesContainer = styled.section`
     width: 36.5rem;
     height: max-content;
     padding: 2rem 0;
@@ -17,7 +28,7 @@ export const PopUpFavoritesContainer = styled.section<PopUpProps>`
     background: ${({ theme }) => theme.colors.greenMint};
     box-shadow: 10px 10px 2px 0px rgba(0, 0, 0, 0.25);
     animation: ${FadeUp} 0.4s ease;
-    display: ${({ $CloseFavorites }) => ($CloseFavorites ? "flex" : "none")};
+    display: flex;
     flex-direction: column;
     align-items: center;
     gap: 2.73rem;

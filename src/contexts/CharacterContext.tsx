@@ -1,6 +1,6 @@
 import { AxiosError } from "axios";
 import React, { createContext, useState } from "react";
-import { instance } from "../services/api";
+import { api } from "../services/api";
 import { ICharacterCliccked, IData } from "../types/interfaces";
 import light from "../styles/themes/light";
 import { UseLocalStorage } from "../hooks/useLocalStorage";
@@ -72,7 +72,7 @@ export const CharacterProvider: React.FC<ICharacterProviderProps> = ({ children 
     const [isLoading, setIsLoading] = useState<boolean>(false);
 
     const { getLocalStorage } = UseLocalStorage();
-    
+
     const getTheme = getLocalStorage("theme");
     const getCurrentTheme = (getTheme && JSON.parse(getTheme)) || light;
 
@@ -81,7 +81,7 @@ export const CharacterProvider: React.FC<ICharacterProviderProps> = ({ children 
     const HandleSearch = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         try {
-            const response = await instance.get(`?count=10&character=${searchCharacter}`);
+            const response = await api.get(`?count=10&character=${searchCharacter}`);
 
             setDataSearch(response.data);
         } catch (err) {

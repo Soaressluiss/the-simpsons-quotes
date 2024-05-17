@@ -9,8 +9,17 @@ const FadeUp = keyframes`
     from { transform: scale(0); opacity: 0}
     to { transform: scale(1); opacity: 1;}
 `;
-
-export const PopUpCharacterContainer = styled.section<PopUpProps>`
+export const ModalBackground = styled.div<PopUpProps>`
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: ${({ $CloseModal }) => ($CloseModal ? "flex" : "none")};
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+`;
+export const PopUpCharacterContainer = styled.section`
+    display: flex;
     transition: transform 0.3s;
     animation: ${FadeUp} 0.4s ease;
     width: 36.5rem;
@@ -19,7 +28,6 @@ export const PopUpCharacterContainer = styled.section<PopUpProps>`
     border: 1px solid rgba(0, 0, 0, 0.41);
     background: ${({ theme }) => theme.colors.greenMint};
     box-shadow: 10px 10px 15px 0px rgba(0, 0, 0, 0.25);
-    display: ${({ $CloseModal }) => ($CloseModal ? "flex" : "none")};
     align-items: center;
     justify-content: space-evenly;
     position: absolute;

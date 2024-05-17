@@ -1,5 +1,5 @@
 import { BsHeart, BsHeartFill, BsX } from "react-icons/bs";
-import { BtnHeart, InfoHeart, PopUpCharacterContainer, PopUpCharacterInfo } from "./styles";
+import { BtnHeart, InfoHeart, ModalBackground, PopUpCharacterContainer, PopUpCharacterInfo } from "./styles";
 import { CharacterContext } from "../../../../contexts/CharacterContext";
 import { useContext } from "react";
 import { FavoriteContext } from "../../../../contexts/FavoriteContext";
@@ -32,28 +32,30 @@ export const PopUpCharacter: React.FC<PopUpTypes> = ({ setCloseModal, closeModal
     }
 
     return (
-        <PopUpCharacterContainer $CloseModal={closeModal} key={id}>
-            <section>
-                <img src={image} alt={`Imagem do ${character}`} title={character} />
-            </section>
-            <PopUpCharacterInfo>
-                <article>
-                    <span>
-                        <h2>{character}</h2>
-                    </span>
-                    <div>
+        <ModalBackground $CloseModal={closeModal}>
+            <PopUpCharacterContainer key={id}>
+                <section>
+                    <img src={image} alt={`Imagem do ${character}`} title={character} />
+                </section>
+                <PopUpCharacterInfo>
+                    <article>
                         <span>
-                            <h3>Quote</h3>
+                            <h2>{character}</h2>
                         </span>
-                        <p>“{quote}”</p>
-                    <BtnHeart onClick={() => handleAddFavorite(id)}>{getHeartIcon(id)}</BtnHeart>
-                    <InfoHeart>salve that quote</InfoHeart>
-                    </div>
-                </article>
-            </PopUpCharacterInfo>
-            <button onClick={() => setCloseModal(!closeModal)}>
-                <BsX />
-            </button>
-        </PopUpCharacterContainer>
+                        <div>
+                            <span>
+                                <h3>Quote</h3>
+                            </span>
+                            <p>“{quote}”</p>
+                            <BtnHeart onClick={() => handleAddFavorite(id)}>{getHeartIcon(id)}</BtnHeart>
+                            <InfoHeart>salve that quote</InfoHeart>
+                        </div>
+                    </article>
+                </PopUpCharacterInfo>
+                <button onClick={() => setCloseModal(!closeModal)}>
+                    <BsX />
+                </button>
+            </PopUpCharacterContainer>
+        </ModalBackground>
     );
 };

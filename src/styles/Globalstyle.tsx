@@ -13,6 +13,8 @@ export const GlobalStyle = createGlobalStyle`
         color: ${({ theme }) => theme.fonts.FColorPrimary};
         scroll-behavior: smooth;
         overflow-x: hidden;
+        width: 100%;
+        height: 100%;
 
         &::-webkit-scrollbar {
             width:10px;

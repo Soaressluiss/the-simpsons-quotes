@@ -1,4 +1,11 @@
-import { ButtonCLose, ButtonDeleteAll, FavoriteQuote, FavoriteQuoteContainer, PopUpFavoritesContainer } from "./styles";
+import {
+    ButtonCLose,
+    ButtonDeleteAll,
+    FavoriteQuote,
+    FavoriteQuoteContainer,
+    ModalBackground,
+    PopUpFavoritesContainer,
+} from "./styles";
 import MyFavoritesQuotes from "../../../../assets/My Favorite Quotes.png";
 import { BsHeartFill, BsTrash, BsX } from "react-icons/bs";
 import { useContext } from "react";
@@ -34,32 +41,34 @@ export const PopUpFavorites: React.FC<PopUpTypes> = ({ closeFavorites, setCloseF
             }
         }
     }
-    function handleDeleteALlQuotes() {
+    function handleDeleteAllQuotes() {
         setFavoriteData([]);
         deleteLocalStorage("favorites");
     }
     return (
-        <PopUpFavoritesContainer $CloseFavorites={closeFavorites}>
-            <img src={MyFavoritesQuotes} alt="my favorite quote image" />
-            <FavoriteQuoteContainer>
-                {favoriteData.length > 0
-                    ? favoriteData.map((item) => (
-                            <FavoriteQuote key={item.id}>
-                                <h3>{item.quote}</h3>
+        <ModalBackground $CloseFavorites={closeFavorites}>
+            <PopUpFavoritesContainer>
+                <img src={MyFavoritesQuotes} alt="my favorite quote image" />
+                <FavoriteQuoteContainer>
+                    {favoriteData.length > 0
+                        ? favoriteData.map((item) => (
+                              <FavoriteQuote key={item.id}>
+                                  <h3>{item.quote}</h3>
 
-                                <button onClick={() => handleDeleteQuote(item.id)}>
-                                    <BsHeartFill />
-                                </button>
-                            </FavoriteQuote>
-                        ))
-                    : null}
-            </FavoriteQuoteContainer>
-            <ButtonCLose onClick={() => setCloseFavorites(!closeFavorites)} title="close Favorite PopUp">
-                <BsX />
-            </ButtonCLose>
-            <ButtonDeleteAll onClick={() => handleDeleteALlQuotes()} title="delete all quotes">
-                <BsTrash />
-            </ButtonDeleteAll>
-        </PopUpFavoritesContainer>
+                                  <button onClick={() => handleDeleteQuote(item.id)}>
+                                      <BsHeartFill />
+                                  </button>
+                              </FavoriteQuote>
+                          ))
+                        : null}
+                </FavoriteQuoteContainer>
+                <ButtonCLose onClick={() => setCloseFavorites(!closeFavorites)} title="close Favorite PopUp">
+                    <BsX />
+                </ButtonCLose>
+                <ButtonDeleteAll onClick={() => handleDeleteAllQuotes()} title="delete all quotes">
+                    <BsTrash />
+                </ButtonDeleteAll>
+            </PopUpFavoritesContainer>
+        </ModalBackground>
     );
 };

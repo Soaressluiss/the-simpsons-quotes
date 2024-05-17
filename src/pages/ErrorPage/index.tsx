@@ -18,7 +18,7 @@ export const ErrorPage: React.FC = () => {
         <>
             <GlobalStyle />
             <ContainerErroPage>
-                <img src={ErrorImage} alt="dfdsd" />
+                <img src={ErrorImage} alt="Image erro" />
                 <ButtonBackHome onClick={() => navigate("/")}>HOME</ButtonBackHome>
             </ContainerErroPage>
         </>
