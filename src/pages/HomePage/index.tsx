@@ -3,14 +3,14 @@ import Logo from "../../assets/Logo.png";
 import { Dashboard } from "./components/Dashboard";
 import { InputSeach } from "./components/InputSearch";
 import { Menu } from "./components/Menu";
-import { PopUpCharacter } from "./components/popUpCharacter";
+import { ModalCharacter } from "./components/ModalCharacter";
 import { Container, LogoImage } from "./styles";
-import { PopUpFavorites } from "./components/popUpFavorites";
+import { ModalFavorites } from "./components/ModalFavorites";
 import { LoadingScreen } from "../../components/LoadingScreen";
 
 export const HomePage: React.FC = () => {
-    const [closeModal, setCloseModal] = useState<boolean>(false);
-    const [closeFavorites, setCloseFavorites] = useState<boolean>(false);
+    const [closeModalCharacter, setCloseModalCharacter] = useState<boolean>(false);
+    const [closeModalFavorites, setCloseModalFavorites] = useState<boolean>(false);
     const [hideLoading, setHideLoading] = useState(true);
 
     setTimeout(() => {
@@ -20,13 +20,13 @@ export const HomePage: React.FC = () => {
     return (
         <>
             <LoadingScreen hideLoading={hideLoading} />
-            <PopUpCharacter closeModal={closeModal} setCloseModal={setCloseModal} />
-            <PopUpFavorites closeFavorites={closeFavorites} setCloseFavorites={setCloseFavorites} />
+            <ModalCharacter closeModal={closeModalCharacter} setCloseModal={setCloseModalCharacter} />
+            <ModalFavorites closeFavorites={closeModalFavorites} setCloseFavorites={setCloseModalFavorites} />
             <Container>
                 <LogoImage src={Logo} alt="logo do site" />
-                <Menu setCloseFavorites={setCloseFavorites} />
+                <Menu setCloseFavorites={setCloseModalFavorites} />
                 <InputSeach />
-                <Dashboard setCloseModal={setCloseModal} />
+                <Dashboard setCloseModal={setCloseModalCharacter} />
             </Container>
         </>
     );

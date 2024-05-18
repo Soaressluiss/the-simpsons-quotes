@@ -1,15 +1,15 @@
 import { BsHeart, BsHeartFill, BsX } from "react-icons/bs";
-import { BtnHeart, InfoHeart, ModalBackground, PopUpCharacterContainer, PopUpCharacterInfo } from "./styles";
+import { BtnHeart, InfoHeart, ModalBackground, ModalCharacterContainer, ModalCharacterInfo } from "./styles";
 import { CharacterContext } from "../../../../contexts/CharacterContext";
 import { ElementRef, useContext, useEffect, useRef } from "react";
 import { FavoriteContext } from "../../../../contexts/FavoriteContext";
 import { UseLocalStorage } from "../../../../hooks/useLocalStorage";
 
-type PopUpTypes = {
+type ModalCharacterTypes = {
     closeModal: boolean;
     setCloseModal: React.Dispatch<React.SetStateAction<boolean>>;
 };
-export const PopUpCharacter: React.FC<PopUpTypes> = ({ setCloseModal, closeModal }) => {
+export const ModalCharacter: React.FC<ModalCharacterTypes> = ({ setCloseModal, closeModal }) => {
     const { characterClicked } = useContext(CharacterContext);
     const { id, image, character, quote } = characterClicked;
     const { setFavoriteData, favoriteData } = useContext(FavoriteContext);
@@ -44,11 +44,11 @@ export const PopUpCharacter: React.FC<PopUpTypes> = ({ setCloseModal, closeModal
 
     return (
         <ModalBackground $CloseModal={closeModal}>
-            <PopUpCharacterContainer ref={modalRef} key={id}>
+            <ModalCharacterContainer ref={modalRef} key={id}>
                 <section>
                     <img src={image} alt={`Imagem do ${character}`} title={character} />
                 </section>
-                <PopUpCharacterInfo>
+                <ModalCharacterInfo>
                     <article>
                         <span>
                             <h2>{character}</h2>
@@ -62,11 +62,11 @@ export const PopUpCharacter: React.FC<PopUpTypes> = ({ setCloseModal, closeModal
                             <InfoHeart>salve that quote</InfoHeart>
                         </div>
                     </article>
-                </PopUpCharacterInfo>
+                </ModalCharacterInfo>
                 <button onClick={() => setCloseModal(false)}>
                     <BsX />
                 </button>
-            </PopUpCharacterContainer>
+            </ModalCharacterContainer>
         </ModalBackground>
     );
 };

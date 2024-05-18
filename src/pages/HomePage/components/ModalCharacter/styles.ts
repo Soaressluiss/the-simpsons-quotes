@@ -1,7 +1,7 @@
 import styled, { keyframes } from "styled-components";
 import { media } from "../../../../styles/customMediaQuery";
 
-type PopUpProps = {
+type ModalBackgroundTypes = {
     $CloseModal: boolean;
 };
 
@@ -9,7 +9,7 @@ const FadeUp = keyframes`
     from { transform: scale(0); opacity: 0}
     to { transform: scale(1); opacity: 1;}
 `;
-export const ModalBackground = styled.div<PopUpProps>`
+export const ModalBackground = styled.div<ModalBackgroundTypes>`
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.6);
@@ -18,7 +18,7 @@ export const ModalBackground = styled.div<PopUpProps>`
     justify-content: center;
     position: fixed;
 `;
-export const PopUpCharacterContainer = styled.section`
+export const ModalCharacterContainer = styled.section`
     display: flex;
     transition: transform 0.3s;
     animation: ${FadeUp} 0.4s ease;
@@ -102,7 +102,7 @@ export const PopUpCharacterContainer = styled.section`
     }
 `;
 
-export const PopUpCharacterInfo = styled.section`
+export const ModalCharacterInfo = styled.section`
     height: 100%;
     border-radius: 0.0625rem 1.875rem 1.875rem 0.0625rem;
     background: ${({ theme }) => theme.colors.teaRose};

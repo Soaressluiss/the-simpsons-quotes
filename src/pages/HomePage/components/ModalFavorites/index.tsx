@@ -4,7 +4,7 @@ import {
     FavoriteQuote,
     FavoriteQuoteContainer,
     ModalBackground,
-    PopUpFavoritesContainer,
+    ModalFavoritesContainer,
 } from "./styles";
 import MyFavoritesQuotes from "../../../../assets/My Favorite Quotes.png";
 import { BsHeartFill, BsTrash, BsX } from "react-icons/bs";
@@ -13,11 +13,11 @@ import { FavoriteContext } from "../../../../contexts/FavoriteContext";
 import { UseLocalStorage } from "../../../../hooks/useLocalStorage";
 import { IFavorite } from "../../../../types/interfaces";
 
-type PopUpTypes = {
+type ModalFavoritesTypes = {
     closeFavorites: boolean;
     setCloseFavorites: React.Dispatch<React.SetStateAction<boolean>>;
 };
-export const PopUpFavorites: React.FC<PopUpTypes> = ({ closeFavorites, setCloseFavorites }) => {
+export const ModalFavorites: React.FC<ModalFavoritesTypes> = ({ closeFavorites, setCloseFavorites }) => {
     const { favoriteData, setFavoriteData } = useContext(FavoriteContext);
     const { setLocalStorage, getLocalStorage, deleteLocalStorage } = UseLocalStorage();
     const modalRef = useRef<ElementRef<"div">>(null);
@@ -59,7 +59,7 @@ export const PopUpFavorites: React.FC<PopUpTypes> = ({ closeFavorites, setCloseF
     }
     return (
         <ModalBackground $CloseFavorites={closeFavorites}>
-            <PopUpFavoritesContainer ref={modalRef}>
+            <ModalFavoritesContainer ref={modalRef}>
                 <img src={MyFavoritesQuotes} alt="my favorite quote image" />
                 <FavoriteQuoteContainer>
                     {favoriteData.length > 0
@@ -74,13 +74,13 @@ export const PopUpFavorites: React.FC<PopUpTypes> = ({ closeFavorites, setCloseF
                           ))
                         : null}
                 </FavoriteQuoteContainer>
-                <ButtonCLose onClick={() => setCloseFavorites(false)} title="close Favorite PopUp">
+                <ButtonCLose onClick={() => setCloseFavorites(false)} title="close favorite modal">
                     <BsX />
                 </ButtonCLose>
                 <ButtonDeleteAll onClick={() => handleDeleteAllQuotes()} title="delete all quotes">
                     <BsTrash />
                 </ButtonDeleteAll>
-            </PopUpFavoritesContainer>
+            </ModalFavoritesContainer>
         </ModalBackground>
     );
 };

@@ -1,7 +1,7 @@
 import styled, { keyframes } from "styled-components";
 import { media } from "../../../../styles/customMediaQuery";
 
-type PopUpProps = {
+type ModalBackgroundTypes = {
     $CloseFavorites: boolean;
 };
 
@@ -10,7 +10,7 @@ const FadeUp = keyframes`
     to { transform: scale(1); opacity: 1;}
 `;
 
-export const ModalBackground = styled.div<PopUpProps>`
+export const ModalBackground = styled.div<ModalBackgroundTypes>`
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.6);
@@ -20,7 +20,7 @@ export const ModalBackground = styled.div<PopUpProps>`
     position: fixed;
 `;
 
-export const PopUpFavoritesContainer = styled.section`
+export const ModalFavoritesContainer = styled.section`
     width: 36.5rem;
     height: max-content;
     padding: 2rem 0;
