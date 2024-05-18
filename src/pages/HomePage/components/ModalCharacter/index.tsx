@@ -28,17 +28,17 @@ export const ModalCharacter: React.FC<ModalCharacterTypes> = ({ setCloseModal, c
         };
     }, [setCloseModal]);
 
-    function handleAddFavorite(id: number) {
-        const hasQuote = favoriteData.find((quote) => quote.id === id);
+    function handleAddFavorite(quote: string) {
+        const hasQuote = favoriteData.find((favorite) => favorite.quote === quote);
 
         if (!hasQuote) {
-            setFavoriteData((previous) => [...previous, { id, quote }]);
-            setLocalStorage("favorites", JSON.stringify([...favoriteData, { id, quote }]));
+            setFavoriteData((previous) => [...previous, { quote }]);
+            setLocalStorage("favorites", JSON.stringify([...favoriteData, { quote }]));
         }
     }
 
-    function getHeartIcon(id: number) {
-        const hasQuote = favoriteData.find((quote) => quote.id === id);
+    function getHeartIcon(quote: string) {
+        const hasQuote = favoriteData.find((favorite) => favorite.quote === quote);
         return hasQuote ? <BsHeartFill style={{ fill: "red" }} /> : <BsHeart />;
     }
 
@@ -58,7 +58,7 @@ export const ModalCharacter: React.FC<ModalCharacterTypes> = ({ setCloseModal, c
                                 <h3>Quote</h3>
                             </span>
                             <p>{quote}</p>
-                            <BtnHeart onClick={() => handleAddFavorite(id)}>{getHeartIcon(id)}</BtnHeart>
+                            <BtnHeart onClick={() => handleAddFavorite(quote)}>{getHeartIcon(quote)}</BtnHeart>
                             <InfoHeart>salve that quote</InfoHeart>
                         </div>
                     </article>

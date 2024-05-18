@@ -7,7 +7,7 @@ import {
     ModalFavoritesContainer,
 } from "./styles";
 import MyFavoritesQuotes from "../../../../assets/My Favorite Quotes.png";
-import { BsHeartFill, BsTrash, BsX } from "react-icons/bs";
+import { BsTrash, BsX } from "react-icons/bs";
 import { ElementRef, useContext, useEffect, useRef } from "react";
 import { FavoriteContext } from "../../../../contexts/FavoriteContext";
 import { UseLocalStorage } from "../../../../hooks/useLocalStorage";
@@ -33,18 +33,18 @@ export const ModalFavorites: React.FC<ModalFavoritesTypes> = ({ closeFavorites, 
         };
     }, [setCloseFavorites]);
 
-    function handleDeleteQuote(id: number) {
+    function handleDeleteQuote(quote: string) {
         setFavoriteData((previous) =>
             previous.filter((salveQuote) => {
-                return id !== salveQuote.id;
+                return quote !== salveQuote.quote;
             }),
         );
 
         const hasQuoteLocalStorage = getLocalStorage("favorites");
         if (hasQuoteLocalStorage) {
             const parsedFavorites = JSON.parse(hasQuoteLocalStorage);
-            const itemToDeleteIndex = parsedFavorites.findIndex((item: IFavorite) => {
-                return item.id === id;
+            const itemToDeleteIndex = parsedFavorites.find((item: IFavorite) => {
+                return item.quote === quote;
             });
 
             if (itemToDeleteIndex !== -1) {
@@ -64,11 +64,11 @@ export const ModalFavorites: React.FC<ModalFavoritesTypes> = ({ closeFavorites, 
                 <FavoriteQuoteContainer>
                     {favoriteData.length > 0
                         ? favoriteData.map((item) => (
-                              <FavoriteQuote key={item.id}>
+                              <FavoriteQuote key={item.quote}>
                                   <h3>{item.quote}</h3>
 
-                                  <button onClick={() => handleDeleteQuote(item.id)}>
-                                      <BsHeartFill />
+                                  <button onClick={() => handleDeleteQuote(item.quote)}>
+                                      <BsTrash />
                                   </button>
                               </FavoriteQuote>
                           ))

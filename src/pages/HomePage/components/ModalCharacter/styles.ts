@@ -217,6 +217,8 @@ export const ModalCharacterInfo = styled.section`
             }
             p {
                 color: ${({ theme }) => theme.fonts.FColorPrimary};
+                height: 100%;
+                min-height: 10rem;
                 text-align: inherit;
                 font-family: ${({ theme }) => theme.fonts.fontSecondary};
                 font-size: 12px;

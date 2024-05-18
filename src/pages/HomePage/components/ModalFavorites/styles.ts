@@ -96,7 +96,8 @@ export const FavoriteQuoteContainer = styled.div`
 
 export const FavoriteQuote = styled.div`
     width: 16rem;
-    height: 6.4rem;
+    max-height: 150px;
+    height: 100%;
     border-radius: 0.875rem;
     border: 1px solid ${({ theme }) => theme.fonts.FColorPrimary};
     background: ${({ theme }) => theme.colors.teaRose};
@@ -128,7 +129,6 @@ export const FavoriteQuote = styled.div`
         border: none;
         border-radius: 50%;
         cursor: pointer;
-        color: #cc0000;
         font-size: 1.4rem;
         display: grid;
         place-items: center;
