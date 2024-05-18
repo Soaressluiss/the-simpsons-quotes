@@ -217,15 +217,23 @@ export const PopUpCharacterInfo = styled.section`
             }
             p {
                 color: ${({ theme }) => theme.fonts.FColorPrimary};
-                text-align: center;
+                text-align: inherit;
                 font-family: ${({ theme }) => theme.fonts.fontSecondary};
-                font-size: 0.92rem;
+                font-size: 12px;
                 font-weight: 400;
                 letter-spacing: 0.16875rem;
                 width: inherit;
+                hyphens: auto;
+                overflow-wrap: break-word;
                 ${media.mobile} {
                     font-size: 0.8rem;
                     letter-spacing: 2.16px;
+                }
+                &::first-letter {
+                    text-transform: capitalize;
+                    font-weight: 700;
+                    font-size: 1rem;
+                    padding-left: 10px;
                 }
             }
         }
@@ -237,7 +245,7 @@ export const InfoHeart = styled.aside`
     width: 8.40569rem;
     bottom: 11px;
     padding: 0.5rem 0;
-    right: 80px;
+    right: 65px;
     border-radius: 5px;
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
     background-color: ${({ theme }) => theme.colors.greenMint};
@@ -251,9 +259,9 @@ export const InfoHeart = styled.aside`
         content: "";
         display: block;
         position: absolute;
-        right: -55px;
+        right: -44px;
         top: 0px;
-        border-width: 19px;
+        border-width: 15px;
         border-style: solid;
         border-color: transparent transparent transparent ${({ theme }) => theme.colors.greenMint};
         transform: translateX(-50%);
