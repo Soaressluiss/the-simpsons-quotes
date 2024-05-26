@@ -31,7 +31,7 @@ export const ModalFavoritesContainer = styled.section`
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 2.73rem;
+    gap: 1.875rem;
     position: absolute;
     z-index: 999;
     > img {
@@ -84,10 +84,19 @@ export const ButtonDeleteAll = styled(ButtonCLose)`
     left: 40px;
 `;
 export const FavoriteQuoteContainer = styled.div`
-    height: max-content;
+    height: 300px;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 1rem;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 20px;
+    &::-webkit-scrollbar {
+        width: 5px;
+    }
+    &::-webkit-scrollbar-thumb {
+        background-color: ${({ theme }) => theme.colors.secondary};
+    }
 
     ${media.tablet} {
         grid-template-columns: 1fr;
@@ -96,8 +105,9 @@ export const FavoriteQuoteContainer = styled.div`
 
 export const FavoriteQuote = styled.div`
     width: 16rem;
-    max-height: 150px;
-    height: 100%;
+    height: max-content;
+    min-height: 7.5rem;
+    padding: 5px;
     border-radius: 0.875rem;
     border: 1px solid ${({ theme }) => theme.fonts.FColorPrimary};
     background: ${({ theme }) => theme.colors.teaRose};
@@ -133,8 +143,8 @@ export const FavoriteQuote = styled.div`
         display: grid;
         place-items: center;
         position: absolute;
-        top: -15px;
-        right: -17px;
+        top: -20px;
+        right: -18px;
         font-size: 1rem;
         &:active {
             transition: transform 0.4s ease;

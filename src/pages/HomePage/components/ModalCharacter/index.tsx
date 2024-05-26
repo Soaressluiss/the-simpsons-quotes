@@ -4,6 +4,7 @@ import { CharacterContext } from "../../../../contexts/CharacterContext";
 import { ElementRef, useContext, useEffect, useRef } from "react";
 import { FavoriteContext } from "../../../../contexts/FavoriteContext";
 import { UseLocalStorage } from "../../../../hooks/useLocalStorage";
+import { IFavorite } from "../../../../types/interfaces";
 
 type ModalCharacterTypes = {
     closeModal: boolean;
@@ -13,7 +14,7 @@ export const ModalCharacter: React.FC<ModalCharacterTypes> = ({ setCloseModal, c
     const { characterClicked } = useContext(CharacterContext);
     const { id, image, character, quote } = characterClicked;
     const { setFavoriteData, favoriteData } = useContext(FavoriteContext);
-    const { setLocalStorage } = UseLocalStorage();
+    const { setLocalStorage, getLocalStorage } = UseLocalStorage();
 
     const modalRef = useRef<ElementRef<"div">>(null);
     useEffect(() => {
@@ -28,13 +29,27 @@ export const ModalCharacter: React.FC<ModalCharacterTypes> = ({ setCloseModal, c
         };
     }, [setCloseModal]);
 
-    function handleAddFavorite(quote: string) {
-        const hasQuote = favoriteData.find((favorite) => favorite.quote === quote);
+    function removeFavoriteQuote(quote: string) {
+        setFavoriteData((previous) => previous.filter((salveQuote) => quote !== salveQuote.quote));
 
-        if (!hasQuote) {
-            setFavoriteData((previous) => [...previous, { quote }]);
-            setLocalStorage("favorites", JSON.stringify([...favoriteData, { quote }]));
+        const hasQuoteLocalStorage = getLocalStorage("favorites");
+        if (hasQuoteLocalStorage) {
+            const parsedFavorites = JSON.parse(hasQuoteLocalStorage);
+            const updatedFavorites = parsedFavorites.filter((item: IFavorite) => item.quote !== quote);
+            setLocalStorage("favorites", JSON.stringify(updatedFavorites));
         }
+    }
+
+    function addFavoriteQuote(quote: string) {
+        setFavoriteData((previous) => {
+            const updatedFavorites = [...previous, { quote }];
+            setLocalStorage("favorites", JSON.stringify(updatedFavorites));
+            return updatedFavorites;
+        });
+    }
+    function handleFavorite(quote: string) {
+        const hasQuote = favoriteData.find((favorite) => favorite.quote === quote);
+        hasQuote ? removeFavoriteQuote(quote) : addFavoriteQuote(quote);
     }
 
     function getHeartIcon(quote: string) {
@@ -58,7 +73,7 @@ export const ModalCharacter: React.FC<ModalCharacterTypes> = ({ setCloseModal, c
                                 <h3>Quote</h3>
                             </span>
                             <p>{quote}</p>
-                            <BtnHeart onClick={() => handleAddFavorite(quote)}>{getHeartIcon(quote)}</BtnHeart>
+                            <BtnHeart onClick={() => handleFavorite(quote)}>{getHeartIcon(quote)}</BtnHeart>
                             <InfoHeart>salve that quote</InfoHeart>
                         </div>
                     </article>

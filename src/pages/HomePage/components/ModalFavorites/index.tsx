@@ -66,8 +66,7 @@ export const ModalFavorites: React.FC<ModalFavoritesTypes> = ({ closeFavorites, 
                         ? favoriteData.map((item) => (
                               <FavoriteQuote key={item.quote}>
                                   <h3>{item.quote}</h3>
-
-                                  <button onClick={() => handleDeleteQuote(item.quote)}>
+                                  <button onClick={() => handleDeleteQuote(item.quote)} title="delete this quote">
                                       <BsTrash />
                                   </button>
                               </FavoriteQuote>
