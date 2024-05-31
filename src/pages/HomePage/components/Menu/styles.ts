@@ -21,7 +21,7 @@ export const NavBar = styled.nav`
 
     ${media.tablet} {
         width: 18rem;
-        height: 2.875rem;
+        height: 3rem;
     }
 
     ${media.mobile} {
@@ -59,5 +59,8 @@ export const IconsMenu = styled.li<IProps>`
     > svg {
         stroke-width: 0.2px;
         font-size: 1.6rem;
+        ${media.tablet} {
+            font-size: 1.3rem;
+        }
     }
 `;

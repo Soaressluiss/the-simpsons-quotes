@@ -10,11 +10,9 @@ export const Container = styled.main`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    ${media.tablet} {
-        width: 48rem;
-    }
+    gap: 2rem;
     ${media.mobile} {
-        width: 21.875rem;
+        gap: 1.5rem;
     }
 `;
 
@@ -23,5 +21,4 @@ export const LogoImage = styled.img`
     width: 15.625rem;
     height: 5.25rem;
     margin-top: 1.75rem;
-    margin-bottom: 2.25rem;
 `;

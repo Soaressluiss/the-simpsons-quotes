@@ -18,18 +18,11 @@ export const CharacterContainer = styled.figure`
     &:focus {
         outline: 3px ${({ theme }) => theme.colors.grayPlatinum} solid;
     }
-
     > img {
         width: 200px;
         height: 300px;
-        
-        ${media.tablet}{
-            width: 150px;
-            height: 250px;
-        }
     }
-
-    ${media.tablet}{
-        width: 220px;
+    ${media.tablet} {
+        width: 240px;
     }
 `;

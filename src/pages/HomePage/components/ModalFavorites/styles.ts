@@ -21,7 +21,8 @@ export const ModalBackground = styled.div<ModalBackgroundTypes>`
 `;
 
 export const ModalFavoritesContainer = styled.section`
-    width: 36.5rem;
+    max-width: 36.5rem;
+    width: 100%;
     height: max-content;
     padding: 2rem 0;
     border-radius: 1.5625rem;
@@ -45,11 +46,11 @@ export const ModalFavoritesContainer = styled.section`
         }
     }
     ${media.tablet} {
-        width: 20rem;
+        width: 80%;
         place-items: center;
     }
     ${media.mobile} {
-        width: 15rem;
+        width: 80%;
     }
 `;
 
@@ -84,6 +85,7 @@ export const ButtonDeleteAll = styled(ButtonCLose)`
     left: 40px;
 `;
 export const FavoriteQuoteContainer = styled.div`
+    width: 100%;
     height: 300px;
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -104,7 +106,7 @@ export const FavoriteQuoteContainer = styled.div`
 `;
 
 export const FavoriteQuote = styled.div`
-    width: 16rem;
+    width: 100%;
     height: max-content;
     min-height: 7.5rem;
     padding: 5px;
@@ -115,7 +117,7 @@ export const FavoriteQuote = styled.div`
     place-items: center;
     position: relative;
     ${media.mobile} {
-        width: 12rem;
+        width: 100%;
     }
 
     > h3 {

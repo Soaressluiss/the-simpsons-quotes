@@ -22,8 +22,10 @@ export const ModalCharacterContainer = styled.section`
     display: flex;
     transition: transform 0.3s;
     animation: ${FadeUp} 0.4s ease;
-    width: 36.5rem;
-    height: 26rem;
+    max-width: 36.5rem;
+    width: 100%;
+    max-height: 26rem;
+    height: 100%;
     border-radius: 1.875rem;
     border: 1px solid rgba(0, 0, 0, 0.41);
     background: ${({ theme }) => theme.colors.greenMint};
@@ -34,13 +36,13 @@ export const ModalCharacterContainer = styled.section`
     z-index: 20;
 
     ${media.tablet} {
-        width: 20rem;
+        width: 70%;
         height: max-content;
-        flex-direction: column;
     }
     ${media.mobile} {
-        width: 15rem;
+        flex-direction: column;
         border-radius: 1rem;
+        width: 80%;
     }
 
     > section {
@@ -57,8 +59,8 @@ export const ModalCharacterContainer = styled.section`
                 margin-bottom: 1rem;
             }
             ${media.mobile} {
-                width: 10rem;
-                height: 16rem;
+                width: 8rem;
+                height: 10.5rem;
                 margin: 0;
             }
         }
@@ -66,6 +68,9 @@ export const ModalCharacterContainer = styled.section`
         ${media.tablet} {
             width: 100%;
             padding: 1rem;
+        }
+        ${media.mobile} {
+            border-radius: 0 0 1.875rem 1.875rem;
         }
     }
     > button {
@@ -103,6 +108,7 @@ export const ModalCharacterContainer = styled.section`
 `;
 
 export const ModalCharacterInfo = styled.section`
+    width: 50%;
     height: 100%;
     border-radius: 0.0625rem 1.875rem 1.875rem 0.0625rem;
     background: ${({ theme }) => theme.colors.teaRose};
@@ -112,10 +118,10 @@ export const ModalCharacterInfo = styled.section`
     padding: 1rem;
 
     ${media.tablet} {
-        border-radius: 0 0 1.875rem 1.875rem;
+        height: 70%;
     }
     ${media.mobile} {
-        border-radius: 0 0 1rem 1rem;
+        padding: 0.2rem;
     }
 
     > article {
@@ -135,6 +141,8 @@ export const ModalCharacterInfo = styled.section`
 
         ${media.mobile} {
             width: 100%;
+            gap: 0.7rem;
+            margin-bottom: 0px;
         }
         > span {
             width: 80%;
@@ -149,8 +157,9 @@ export const ModalCharacterInfo = styled.section`
                 gap: 0rem;
             }
             ${media.mobile} {
-                padding: 0.6rem;
                 border-radius: 5px;
+                width: 100%;
+                padding: 0.5rem;
             }
 
             > h2 {
@@ -186,6 +195,7 @@ export const ModalCharacterInfo = styled.section`
             }
             ${media.mobile} {
                 border-radius: 0.8rem;
+                width: 100%;
             }
 
             > span {
@@ -228,8 +238,11 @@ export const ModalCharacterInfo = styled.section`
                 hyphens: auto;
                 overflow-wrap: break-word;
                 ${media.mobile} {
-                    font-size: 0.8rem;
+                    min-height: 7rem;
                     letter-spacing: 2.16px;
+                    font-size: 0.6rem;
+                    line-height: 1.1rem;
+                    padding: 0 10px;
                 }
                 &::first-letter {
                     text-transform: capitalize;
@@ -299,8 +312,7 @@ export const BtnHeart = styled.button`
         display: block;
     }
     ${media.mobile} {
-        width: 46px;
-        height: 43.7px;
-        font-size: 0.7rem;
+        width: 2.875rem;
+        height: 2.7313rem;
     }
 `;

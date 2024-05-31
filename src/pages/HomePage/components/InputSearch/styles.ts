@@ -2,23 +2,27 @@ import styled from "styled-components";
 import { media } from "../../../../styles/customMediaQuery";
 
 export const ContainerSearch = styled.form`
-    width: 700px;
+    max-width: 700px;
+    max-height: 60px;
+    height: 100%;
+    width: 100%;
     display: flex;
     flex-direction: row;
     align-items: center;
     gap: 0.9rem;
     ${media.tablet} {
-        width: max-content;
+        max-width: 500px;
+        gap: 0.4rem;
     }
     ${media.mobile} {
-        gap: 0.6rem;
+        max-width: 18.125rem;
     }
 `;
 
 export const Input = styled.input`
-    width: 800px;
-    height: 60px;
-    border-radius: 15px;
+    width: 100%;
+    height: 100%;
+    border-radius: 0.625rem;
     background: ${({ theme }) => theme.colors.grayPlatinum};
     outline: none;
     border: none;
@@ -38,12 +42,9 @@ export const Input = styled.input`
         letter-spacing: 3.36px;
         color: ${({ theme }) => theme.fonts.FColorPrimary};
     }
-    ${media.tablet} {
-        width: 500px;
-        height: 50px;
-    }
+
     ${media.mobile} {
-        width: 250px;
+        height: 20%;
         font-size: 0.8rem;
         border-radius: 10px;
         &::placeholder {
@@ -76,7 +77,7 @@ export const ElipseBtn = styled.button`
     }
 
     ${media.tablet} {
-        width: 50px;
+        width: 60px;
         height: 50px;
         font-size: 1.2rem;
     }

@@ -17,10 +17,9 @@ export const GlobalStyle = createGlobalStyle`
         height: 100%;
 
         &::-webkit-scrollbar {
-            width:10px;
+            width:5px;
         }
         &::-webkit-scrollbar-thumb {
-            border-radius: 10px;
             background-color:  ${({ theme }) => theme.colors.secondary};
         }
     }
