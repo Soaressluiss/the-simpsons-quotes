@@ -19,6 +19,7 @@ export const Character: React.FC<ICharacter> = ({ id, image, character, quote, s
             quote,
         });
         setCloseModal(true);
+        document.body.style.overflow = "hidden";
     }
 
     return (

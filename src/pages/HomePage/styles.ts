@@ -21,4 +21,5 @@ export const LogoImage = styled.img`
     width: 15.625rem;
     height: 5.25rem;
     margin-top: 1.75rem;
+    cursor: pointer;
 `;

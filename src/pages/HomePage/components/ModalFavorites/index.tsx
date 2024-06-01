@@ -28,6 +28,7 @@ export const ModalFavorites: React.FC<ModalFavoritesTypes> = ({ closeFavorites, 
             }
         };
         document.addEventListener("mousedown", handleOutsideClick);
+        document.body.style.overflow = "auto";
         return () => {
             document.removeEventListener("mousedown", handleOutsideClick);
         };
@@ -57,6 +58,10 @@ export const ModalFavorites: React.FC<ModalFavoritesTypes> = ({ closeFavorites, 
         setFavoriteData([]);
         deleteLocalStorage("favorites");
     }
+    function handleCloseModal() {
+        document.body.style.overflow = "auto";
+        setCloseFavorites(false);
+    }
     return (
         <ModalBackground $CloseFavorites={closeFavorites}>
             <ModalFavoritesContainer ref={modalRef}>
@@ -73,7 +78,7 @@ export const ModalFavorites: React.FC<ModalFavoritesTypes> = ({ closeFavorites, 
                           ))
                         : null}
                 </FavoriteQuoteContainer>
-                <ButtonCLose onClick={() => setCloseFavorites(false)} title="close favorite modal">
+                <ButtonCLose onClick={() => handleCloseModal()} title="close favorite modal">
                     <BsX />
                 </ButtonCLose>
                 <ButtonDeleteAll onClick={() => handleDeleteAllQuotes()} title="delete all quotes">

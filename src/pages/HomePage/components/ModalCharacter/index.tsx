@@ -24,6 +24,7 @@ export const ModalCharacter: React.FC<ModalCharacterTypes> = ({ setCloseModal, c
             }
         };
         document.addEventListener("mousedown", handleOutsideClick);
+        document.body.style.overflow = "auto";
         return () => {
             document.removeEventListener("mousedown", handleOutsideClick);
         };
@@ -56,6 +57,10 @@ export const ModalCharacter: React.FC<ModalCharacterTypes> = ({ setCloseModal, c
         const hasQuote = favoriteData.find((favorite) => favorite.quote === quote);
         return hasQuote ? <BsHeartFill style={{ fill: "red" }} /> : <BsHeart />;
     }
+    function handleCloseModal() {
+        document.body.style.overflow = "auto";
+        setCloseModal(false);
+    }
 
     return (
         <ModalBackground $CloseModal={closeModal}>
@@ -78,7 +83,7 @@ export const ModalCharacter: React.FC<ModalCharacterTypes> = ({ setCloseModal, c
                         </div>
                     </article>
                 </ModalCharacterInfo>
-                <button onClick={() => setCloseModal(false)}>
+                <button onClick={() => handleCloseModal()}>
                     <BsX />
                 </button>
             </ModalCharacterContainer>

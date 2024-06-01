@@ -15,7 +15,11 @@ export const HomePage: React.FC = () => {
 
     setTimeout(() => {
         setHideLoading(false);
-    }, 4000);
+    }, 5000);
+
+    function reloadPage() {
+        window.location.reload();
+    }
 
     return (
         <>
@@ -23,7 +27,7 @@ export const HomePage: React.FC = () => {
             <ModalCharacter closeModal={closeModalCharacter} setCloseModal={setCloseModalCharacter} />
             <ModalFavorites closeFavorites={closeModalFavorites} setCloseFavorites={setCloseModalFavorites} />
             <Container>
-                <LogoImage src={Logo} alt="logo do site" />
+                <LogoImage onClick={() => reloadPage()} src={Logo} alt="logo" />
                 <Menu setCloseFavorites={setCloseModalFavorites} />
                 <InputSeach />
                 <Dashboard setCloseModal={setCloseModalCharacter} />

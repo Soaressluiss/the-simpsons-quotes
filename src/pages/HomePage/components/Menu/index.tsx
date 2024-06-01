@@ -1,6 +1,6 @@
 import React, { useContext, useState, useCallback } from "react";
 import { IconsMenu, NavBar } from "./styles";
-import { BsHouse, BsHeart, BsMusicNoteBeamed, BsMoon, BsSun } from "react-icons/bs";
+import { BsHeart, BsMusicNoteBeamed, BsMoon, BsSun, BsArrowUp } from "react-icons/bs";
 import { SongController } from "../SongController";
 import dark from "../../../../styles/themes/dark";
 import light from "../../../../styles/themes/light";
@@ -11,8 +11,10 @@ type MenuProps = {
     setCloseFavorites: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
+type ActiveType = "Favorites" | "Music" | "Theme" | "Top";
+
 export const Menu: React.FC<MenuProps> = ({ setCloseFavorites }) => {
-    const [active, setActive] = useState("Home");
+    const [active, setActive] = useState<ActiveType>("Favorites");
     const [showControllerSong, setShowControllerSong] = useState(false);
     const { setLocalStorage } = UseLocalStorage();
     const { setCurrentTheme, currentTheme } = useContext(CharacterContext);
@@ -26,14 +28,15 @@ export const Menu: React.FC<MenuProps> = ({ setCloseFavorites }) => {
         setActive("Theme");
     }, [setCurrentTheme, setLocalStorage]);
 
-    const handleHome = () => {
-        window.location.reload();
-        setActive("Home");
+    const handleTop = () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+        setActive("Top");
     };
 
     const handleFavorites = () => {
         setActive("Favorites");
         setCloseFavorites(true);
+        document.body.style.overflow = "hidden";
     };
 
     const handleSong = () => {
@@ -42,15 +45,15 @@ export const Menu: React.FC<MenuProps> = ({ setCloseFavorites }) => {
     };
 
     const Icons = [
-        { id: 0, title: "Home", icon: <BsHouse />, onclick: handleHome },
-        { id: 1, title: "Favorites", icon: <BsHeart />, onclick: handleFavorites },
-        { id: 2, title: "Music", icon: <BsMusicNoteBeamed />, onclick: handleSong },
+        { id: 0, title: "Favorites", icon: <BsHeart />, onclick: handleFavorites },
         {
-            id: 3,
+            id: 1,
             title: "Theme",
             icon: currentTheme.name === "light" ? <BsSun /> : <BsMoon />,
             onclick: handleTheme,
         },
+        { id: 2, title: "Music", icon: <BsMusicNoteBeamed />, onclick: handleSong },
+        { id: 3, title: "Top", icon: <BsArrowUp />, onclick: handleTop },
     ];
 
     return (

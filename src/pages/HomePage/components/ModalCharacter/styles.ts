@@ -33,7 +33,7 @@ export const ModalCharacterContainer = styled.section`
     align-items: center;
     justify-content: space-evenly;
     position: absolute;
-    z-index: 20;
+    z-index: 10;
 
     ${media.tablet} {
         width: 70%;

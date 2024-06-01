@@ -34,7 +34,7 @@ export const ModalFavoritesContainer = styled.section`
     align-items: center;
     gap: 1.875rem;
     position: absolute;
-    z-index: 999;
+    z-index: 10;
     > img {
         width: 250px;
 

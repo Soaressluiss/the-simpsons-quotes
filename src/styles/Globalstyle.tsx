@@ -12,7 +12,6 @@ export const GlobalStyle = createGlobalStyle`
         font-family: sans-serif;
         color: ${({ theme }) => theme.fonts.FColorPrimary};
         scroll-behavior: smooth;
-        overflow-x: hidden;
         width: 100%;
         height: 100%;
 

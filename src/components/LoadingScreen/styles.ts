@@ -6,8 +6,9 @@ interface ILoadingProps {
 }
 
 export const ContainerLoading = styled.main<ILoadingProps>`
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    min-height: 100vh;
+    height: 100%;
     display: ${({ $Hide }) => ($Hide ? "flex" : "none")};
     position: absolute;
     flex-direction: column;
