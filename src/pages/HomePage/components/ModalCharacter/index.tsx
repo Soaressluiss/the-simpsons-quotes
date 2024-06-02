@@ -21,10 +21,10 @@ export const ModalCharacter: React.FC<ModalCharacterTypes> = ({ setCloseModal, c
         const handleOutsideClick = (event: MouseEvent) => {
             if (modalRef.current && !modalRef.current.contains(event.target as Node)) {
                 setCloseModal(false);
+                document.body.style.overflow = "auto";
             }
         };
         document.addEventListener("mousedown", handleOutsideClick);
-        document.body.style.overflow = "auto";
         return () => {
             document.removeEventListener("mousedown", handleOutsideClick);
         };

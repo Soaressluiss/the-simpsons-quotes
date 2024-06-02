@@ -25,10 +25,10 @@ export const ModalFavorites: React.FC<ModalFavoritesTypes> = ({ closeFavorites, 
         const handleOutsideClick = (event: MouseEvent) => {
             if (modalRef.current && !modalRef.current.contains(event.target as Node)) {
                 setCloseFavorites(false);
+                document.body.style.overflow = "auto";
             }
         };
         document.addEventListener("mousedown", handleOutsideClick);
-        document.body.style.overflow = "auto";
         return () => {
             document.removeEventListener("mousedown", handleOutsideClick);
         };
