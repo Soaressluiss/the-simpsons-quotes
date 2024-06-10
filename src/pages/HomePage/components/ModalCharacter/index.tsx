@@ -5,6 +5,7 @@ import { ElementRef, useContext, useEffect, useRef } from "react";
 import { FavoriteContext } from "../../../../contexts/FavoriteContext";
 import { UseLocalStorage } from "../../../../hooks/useLocalStorage";
 import { IFavorite } from "../../../../types/interfaces";
+import { manipulationScroll } from "../../../../utils/functions/manipulationScroll";
 
 type ModalCharacterTypes = {
     closeModal: boolean;
@@ -20,8 +21,8 @@ export const ModalCharacter: React.FC<ModalCharacterTypes> = ({ setCloseModal, c
     useEffect(() => {
         const handleOutsideClick = (event: MouseEvent) => {
             if (modalRef.current && !modalRef.current.contains(event.target as Node)) {
+                manipulationScroll();
                 setCloseModal(false);
-                document.body.style.overflow = "auto";
             }
         };
         document.addEventListener("mousedown", handleOutsideClick);
@@ -58,7 +59,7 @@ export const ModalCharacter: React.FC<ModalCharacterTypes> = ({ setCloseModal, c
         return hasQuote ? <BsHeartFill style={{ fill: "red" }} /> : <BsHeart />;
     }
     function handleCloseModal() {
-        document.body.style.overflow = "auto";
+        manipulationScroll();
         setCloseModal(false);
     }
 

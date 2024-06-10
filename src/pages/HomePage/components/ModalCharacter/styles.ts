@@ -296,15 +296,10 @@ export const BtnHeart = styled.button`
     outline: none;
     display: grid;
     place-items: center;
-    font-size: 1rem;
+    font-size: 1.3rem;
     color: ${({ theme }) => theme.fonts.FColorPrimary};
     cursor: pointer;
     border: none;
-    &:active {
-        transition: 0.4s ease;
-        transform: scale(0.95);
-        font-size: 1.9rem;
-    }
     &:focus {
         outline: 2px ${({ theme }) => theme.colors.grayPlatinum} solid;
     }

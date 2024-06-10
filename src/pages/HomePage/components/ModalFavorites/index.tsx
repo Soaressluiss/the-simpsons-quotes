@@ -12,6 +12,7 @@ import { ElementRef, useContext, useEffect, useRef } from "react";
 import { FavoriteContext } from "../../../../contexts/FavoriteContext";
 import { UseLocalStorage } from "../../../../hooks/useLocalStorage";
 import { IFavorite } from "../../../../types/interfaces";
+import { manipulationScroll } from "../../../../utils/functions/manipulationScroll";
 
 type ModalFavoritesTypes = {
     closeFavorites: boolean;
@@ -21,11 +22,12 @@ export const ModalFavorites: React.FC<ModalFavoritesTypes> = ({ closeFavorites, 
     const { favoriteData, setFavoriteData } = useContext(FavoriteContext);
     const { setLocalStorage, getLocalStorage, deleteLocalStorage } = UseLocalStorage();
     const modalRef = useRef<ElementRef<"div">>(null);
+
     useEffect(() => {
         const handleOutsideClick = (event: MouseEvent) => {
             if (modalRef.current && !modalRef.current.contains(event.target as Node)) {
+                manipulationScroll();
                 setCloseFavorites(false);
-                document.body.style.overflow = "auto";
             }
         };
         document.addEventListener("mousedown", handleOutsideClick);
@@ -59,7 +61,6 @@ export const ModalFavorites: React.FC<ModalFavoritesTypes> = ({ closeFavorites, 
         deleteLocalStorage("favorites");
     }
     function handleCloseModal() {
-        document.body.style.overflow = "auto";
         setCloseFavorites(false);
     }
     return (

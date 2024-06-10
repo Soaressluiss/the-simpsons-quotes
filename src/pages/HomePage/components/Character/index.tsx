@@ -1,4 +1,5 @@
 import { CharacterContext } from "../../../../contexts/CharacterContext";
+import { manipulationScroll } from "../../../../utils/functions/manipulationScroll";
 import { CharacterContainer } from "./styles";
 import { useContext } from "react";
 export interface ICharacter {
@@ -19,7 +20,7 @@ export const Character: React.FC<ICharacter> = ({ id, image, character, quote, s
             quote,
         });
         setCloseModal(true);
-        document.body.style.overflow = "hidden";
+        manipulationScroll("hidden");
     }
 
     return (
