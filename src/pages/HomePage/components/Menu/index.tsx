@@ -11,10 +11,10 @@ type MenuProps = {
     setCloseFavorites: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-type ActiveType = "Favorites" | "Music" | "Theme" | "Top";
+type ActiveType = "Favorites" | "Music" | "Theme" | "Top" | "";
 
 export const Menu: React.FC<MenuProps> = ({ setCloseFavorites }) => {
-    const [active, setActive] = useState<ActiveType>("Favorites");
+    const [active, setActive] = useState<ActiveType>("");
     const [showControllerSong, setShowControllerSong] = useState(false);
     const { setLocalStorage } = UseLocalStorage();
     const { setCurrentTheme, currentTheme } = useContext(CharacterContext);
