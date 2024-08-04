@@ -3,7 +3,6 @@ import { HomePage } from "./pages/HomePage";
 import { App } from "./App";
 import { CharacterProvider } from "./contexts/CharacterContext";
 import { FavoriteProvider } from "./contexts/FavoriteContext";
-import { ErrorPage } from "./pages/ErrorPage";
 
 export const router = createBrowserRouter([
     {
@@ -15,7 +14,6 @@ export const router = createBrowserRouter([
                 </FavoriteProvider>
             </CharacterProvider>
         ),
-        errorElement:  <ErrorPage /> ,
         children: [
             {
                 path: "/",
