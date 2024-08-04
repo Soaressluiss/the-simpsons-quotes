@@ -1,35 +1,28 @@
 import { BsHeart, BsHeartFill, BsX } from "react-icons/bs";
-import { BtnHeart, InfoHeart, ModalBackground, ModalCharacterContainer, ModalCharacterInfo } from "./styles";
+import {
+    BtnHeart,
+    ContainerCharacter,
+    ContendCharacter,
+    InfoHeart,
+    ModalCharacterContainer,
+    ModalCharacterInfo,
+} from "./styles";
 import { CharacterContext } from "../../../../contexts/CharacterContext";
-import { ElementRef, useContext, useEffect, useRef } from "react";
+import { useContext } from "react";
 import { FavoriteContext } from "../../../../contexts/FavoriteContext";
 import { UseLocalStorage } from "../../../../hooks/useLocalStorage";
 import { IFavorite } from "../../../../types/interfaces";
-import { manipulationScroll } from "../../../../utils/functions/manipulationScroll";
+import ModalContainer from "../../../../components/Dialog";
 
 type ModalCharacterTypes = {
-    closeModal: boolean;
-    setCloseModal: React.Dispatch<React.SetStateAction<boolean>>;
+    openModal: boolean;
+    handleModalCharacter(isOpen: boolean): void;
 };
-export const ModalCharacter: React.FC<ModalCharacterTypes> = ({ setCloseModal, closeModal }) => {
+export const ModalCharacter: React.FC<ModalCharacterTypes> = ({ openModal, handleModalCharacter }) => {
     const { characterClicked } = useContext(CharacterContext);
     const { id, image, character, quote } = characterClicked;
     const { setFavoriteData, favoriteData } = useContext(FavoriteContext);
     const { setLocalStorage, getLocalStorage } = UseLocalStorage();
-
-    const modalRef = useRef<ElementRef<"div">>(null);
-    useEffect(() => {
-        const handleOutsideClick = (event: MouseEvent) => {
-            if (modalRef.current && !modalRef.current.contains(event.target as Node)) {
-                manipulationScroll();
-                setCloseModal(false);
-            }
-        };
-        document.addEventListener("mousedown", handleOutsideClick);
-        return () => {
-            document.removeEventListener("mousedown", handleOutsideClick);
-        };
-    }, [setCloseModal]);
 
     function removeFavoriteQuote(quote: string) {
         setFavoriteData((previous) => previous.filter((salveQuote) => quote !== salveQuote.quote));
@@ -58,36 +51,30 @@ export const ModalCharacter: React.FC<ModalCharacterTypes> = ({ setCloseModal, c
         const hasQuote = favoriteData.find((favorite) => favorite.quote === quote);
         return hasQuote ? <BsHeartFill style={{ fill: "red" }} /> : <BsHeart />;
     }
-    function handleCloseModal() {
-        manipulationScroll();
-        setCloseModal(false);
-    }
 
     return (
-        <ModalBackground $CloseModal={closeModal}>
-            <ModalCharacterContainer ref={modalRef} key={id}>
-                <section>
-                    <img src={image} alt={`Imagem do ${character}`} title={character} />
-                </section>
+        <ModalContainer openModal={openModal} handleOpenModal={handleModalCharacter}>
+            <ModalCharacterContainer key={id}>
+                <ContainerCharacter>
+                    <div>
+                        <img src={image} alt={`Imagem do ${character}`} title={character} />
+                    </div>
+                </ContainerCharacter>
                 <ModalCharacterInfo>
-                    <article>
-                        <span>
-                            <h2>{character}</h2>
-                        </span>
+                    <ContendCharacter>
+                        <h2>{character}</h2>
                         <div>
-                            <span>
-                                <h3>Quote</h3>
-                            </span>
-                            <p>{quote}</p>
+                            <h3>Quote</h3>
+                            <span>{quote}</span>
                             <BtnHeart onClick={() => handleFavorite(quote)}>{getHeartIcon(quote)}</BtnHeart>
                             <InfoHeart>salve that quote</InfoHeart>
                         </div>
-                    </article>
+                    </ContendCharacter>
                 </ModalCharacterInfo>
-                <button onClick={() => handleCloseModal()}>
+                <button onClick={() => handleModalCharacter(false)}>
                     <BsX />
                 </button>
             </ModalCharacterContainer>
-        </ModalBackground>
+        </ModalContainer>
     );
 };

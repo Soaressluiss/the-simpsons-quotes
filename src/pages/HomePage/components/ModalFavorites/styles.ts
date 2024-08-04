@@ -1,29 +1,15 @@
 import styled, { keyframes } from "styled-components";
 import { media } from "../../../../styles/customMediaQuery";
 
-type ModalBackgroundTypes = {
-    $CloseFavorites: boolean;
-};
-
 const FadeUp = keyframes`
     from { transform: scale(0); opacity: 0}
     to { transform: scale(1); opacity: 1;}
 `;
 
-export const ModalBackground = styled.div<ModalBackgroundTypes>`
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.6);
-    display: ${({ $CloseFavorites }) => ($CloseFavorites ? "flex" : "none")};
-    align-items: center;
-    justify-content: center;
-    position: fixed;
-`;
-
 export const ModalFavoritesContainer = styled.section`
-    max-width: 36.5rem;
+    min-width: 584px;
     width: 100%;
-    height: max-content;
+    height: 400px;
     padding: 2rem 0;
     border-radius: 1.5625rem;
     background: ${({ theme }) => theme.colors.greenMint};
@@ -35,6 +21,12 @@ export const ModalFavoritesContainer = styled.section`
     gap: 1.875rem;
     position: absolute;
     z-index: 10;
+    ${media.tablet} {
+        min-width: 25rem;
+    }
+    ${media.mobile} {
+        min-width: 16.25rem;
+    }
     > img {
         width: 250px;
 
@@ -44,13 +36,6 @@ export const ModalFavoritesContainer = styled.section`
         ${media.mobile} {
             width: 150px;
         }
-    }
-    ${media.tablet} {
-        width: 80%;
-        place-items: center;
-    }
-    ${media.mobile} {
-        width: 80%;
     }
 `;
 

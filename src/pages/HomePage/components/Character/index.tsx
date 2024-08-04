@@ -1,5 +1,4 @@
 import { CharacterContext } from "../../../../contexts/CharacterContext";
-import { manipulationScroll } from "../../../../utils/functions/manipulationScroll";
 import { CharacterContainer } from "./styles";
 import { useContext } from "react";
 export interface ICharacter {
@@ -7,9 +6,9 @@ export interface ICharacter {
     image: string;
     character: string;
     quote: string;
-    setCloseModal: React.Dispatch<React.SetStateAction<boolean>>;
+    handleModalCharacter(isOpen: boolean): void;
 }
-export const Character: React.FC<ICharacter> = ({ id, image, character, quote, setCloseModal }) => {
+export const Character: React.FC<ICharacter> = ({ id, image, character, quote, handleModalCharacter }) => {
     const { setCharacterClicked } = useContext(CharacterContext);
 
     function characterClicked(id: number, image: string, character: string, quote: string) {
@@ -19,8 +18,7 @@ export const Character: React.FC<ICharacter> = ({ id, image, character, quote, s
             character,
             quote,
         });
-        setCloseModal(true);
-        manipulationScroll("hidden");
+        handleModalCharacter(true);
     }
 
     return (

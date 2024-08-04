@@ -8,12 +8,12 @@ import { CharacterContext } from "../../../../contexts/CharacterContext";
 import { UseLocalStorage } from "../../../../hooks/useLocalStorage";
 
 type MenuProps = {
-    setCloseFavorites: React.Dispatch<React.SetStateAction<boolean>>;
+    handleModalFavorite(isOpen: boolean): void;
 };
 
 type ActiveType = "Favorites" | "Music" | "Theme" | "Top" | "";
 
-export const Menu: React.FC<MenuProps> = ({ setCloseFavorites }) => {
+export const Menu: React.FC<MenuProps> = ({ handleModalFavorite }) => {
     const [active, setActive] = useState<ActiveType>("");
     const [showControllerSong, setShowControllerSong] = useState(false);
     const { setLocalStorage } = UseLocalStorage();
@@ -35,8 +35,7 @@ export const Menu: React.FC<MenuProps> = ({ setCloseFavorites }) => {
 
     const handleFavorites = () => {
         setActive("Favorites");
-        setCloseFavorites(true);
-        document.body.style.overflow = "hidden";
+        handleModalFavorite(true);
     };
 
     const handleSong = () => {

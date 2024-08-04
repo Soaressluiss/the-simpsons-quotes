@@ -1,40 +1,19 @@
-import {
-    ButtonCLose,
-    ButtonDeleteAll,
-    FavoriteQuote,
-    FavoriteQuoteContainer,
-    ModalBackground,
-    ModalFavoritesContainer,
-} from "./styles";
+import { ButtonCLose, ButtonDeleteAll, FavoriteQuote, FavoriteQuoteContainer, ModalFavoritesContainer } from "./styles";
 import MyFavoritesQuotes from "../../../../assets/My Favorite Quotes.png";
 import { BsTrash, BsX } from "react-icons/bs";
-import { ElementRef, useContext, useEffect, useRef } from "react";
+import { useContext } from "react";
 import { FavoriteContext } from "../../../../contexts/FavoriteContext";
 import { UseLocalStorage } from "../../../../hooks/useLocalStorage";
 import { IFavorite } from "../../../../types/interfaces";
-import { manipulationScroll } from "../../../../utils/functions/manipulationScroll";
+import ModalContainer from "../../../../components/Dialog";
 
 type ModalFavoritesTypes = {
-    closeFavorites: boolean;
-    setCloseFavorites: React.Dispatch<React.SetStateAction<boolean>>;
+    openFavorites: boolean;
+    handleModalFavorite(isOpen: boolean): void;
 };
-export const ModalFavorites: React.FC<ModalFavoritesTypes> = ({ closeFavorites, setCloseFavorites }) => {
+export const ModalFavorites: React.FC<ModalFavoritesTypes> = ({ openFavorites, handleModalFavorite }) => {
     const { favoriteData, setFavoriteData } = useContext(FavoriteContext);
     const { setLocalStorage, getLocalStorage, deleteLocalStorage } = UseLocalStorage();
-    const modalRef = useRef<ElementRef<"div">>(null);
-
-    useEffect(() => {
-        const handleOutsideClick = (event: MouseEvent) => {
-            if (modalRef.current && !modalRef.current.contains(event.target as Node)) {
-                manipulationScroll();
-                setCloseFavorites(false);
-            }
-        };
-        document.addEventListener("mousedown", handleOutsideClick);
-        return () => {
-            document.removeEventListener("mousedown", handleOutsideClick);
-        };
-    }, [setCloseFavorites]);
 
     function handleDeleteQuote(quote: string) {
         setFavoriteData((previous) =>
@@ -60,12 +39,12 @@ export const ModalFavorites: React.FC<ModalFavoritesTypes> = ({ closeFavorites, 
         setFavoriteData([]);
         deleteLocalStorage("favorites");
     }
-    function handleCloseModal() {
-        setCloseFavorites(false);
+    function handleopenModal() {
+        handleModalFavorite(false);
     }
     return (
-        <ModalBackground $CloseFavorites={closeFavorites}>
-            <ModalFavoritesContainer ref={modalRef}>
+        <ModalContainer openModal={openFavorites} handleOpenModal={handleModalFavorite}>
+            <ModalFavoritesContainer>
                 <img src={MyFavoritesQuotes} alt="my favorite quote image" />
                 <FavoriteQuoteContainer>
                     {favoriteData.length > 0
@@ -79,13 +58,13 @@ export const ModalFavorites: React.FC<ModalFavoritesTypes> = ({ closeFavorites, 
                           ))
                         : null}
                 </FavoriteQuoteContainer>
-                <ButtonCLose onClick={() => handleCloseModal()} title="close favorite modal">
+                <ButtonCLose onClick={() => handleopenModal()} title="close favorite modal">
                     <BsX />
                 </ButtonCLose>
                 <ButtonDeleteAll onClick={() => handleDeleteAllQuotes()} title="delete all quotes">
                     <BsTrash />
                 </ButtonDeleteAll>
             </ModalFavoritesContainer>
-        </ModalBackground>
+        </ModalContainer>
     );
 };

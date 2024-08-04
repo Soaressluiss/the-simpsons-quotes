@@ -7,9 +7,9 @@ import Loading from "../../../../components/Loading";
 import { CharacterContext } from "../../../../contexts/CharacterContext";
 
 interface IDashboardProps {
-    setCloseModal: React.Dispatch<React.SetStateAction<boolean>>;
+    handleModalCharacter(isOpen: boolean): void;
 }
-export const Dashboard: React.FC<IDashboardProps> = ({ setCloseModal }) => {
+export const Dashboard: React.FC<IDashboardProps> = ({ handleModalCharacter }) => {
     const [quotePerPage, setQuotePerPage] = useState(2);
     const { data, setData, dataSearch, isLoading, setIsLoading } = useContext(CharacterContext);
 
@@ -56,7 +56,7 @@ export const Dashboard: React.FC<IDashboardProps> = ({ setCloseModal }) => {
                           <Character
                               key={id}
                               id={id}
-                              setCloseModal={setCloseModal}
+                              handleModalCharacter={handleModalCharacter}
                               image={item.image}
                               character={item.character}
                               quote={item.quote}
@@ -66,7 +66,7 @@ export const Dashboard: React.FC<IDashboardProps> = ({ setCloseModal }) => {
                           <Character
                               key={id}
                               id={id}
-                              setCloseModal={setCloseModal}
+                              handleModalCharacter={handleModalCharacter}
                               image={item.image}
                               character={item.character}
                               quote={item.quote}

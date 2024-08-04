@@ -9,9 +9,16 @@ import { ModalFavorites } from "./components/ModalFavorites";
 import { LoadingScreen } from "../../components/LoadingScreen";
 
 export const HomePage: React.FC = () => {
-    const [closeModalCharacter, setCloseModalCharacter] = useState<boolean>(false);
-    const [closeModalFavorites, setCloseModalFavorites] = useState<boolean>(false);
+    const [openModalCharacter, setopenModalCharacter] = useState<boolean>(false);
+    const [openModalFavorites, setopenModalFavorites] = useState<boolean>(false);
     const [hideLoading, setHideLoading] = useState(true);
+
+    function handleModalCharacter(isOpen: boolean) {
+        setopenModalCharacter(isOpen);
+    }
+    function handleModalFavorite(isOpen: boolean) {
+        setopenModalFavorites(isOpen);
+    }
 
     setTimeout(() => {
         setHideLoading(false);
@@ -24,13 +31,13 @@ export const HomePage: React.FC = () => {
     return (
         <>
             <LoadingScreen hideLoading={hideLoading} />
-            <ModalCharacter closeModal={closeModalCharacter} setCloseModal={setCloseModalCharacter} />
-            <ModalFavorites closeFavorites={closeModalFavorites} setCloseFavorites={setCloseModalFavorites} />
+            <ModalCharacter openModal={openModalCharacter} handleModalCharacter={handleModalCharacter} />
+            <ModalFavorites openFavorites={openModalFavorites} handleModalFavorite={handleModalFavorite} />
             <Container>
                 <LogoImage onClick={() => reloadPage()} src={Logo} alt="logo" />
-                <Menu setCloseFavorites={setCloseModalFavorites} />
+                <Menu handleModalFavorite={handleModalFavorite} />
                 <InputSeach />
-                <Dashboard setCloseModal={setCloseModalCharacter} />
+                <Dashboard handleModalCharacter={handleModalCharacter} />
             </Container>
         </>
     );

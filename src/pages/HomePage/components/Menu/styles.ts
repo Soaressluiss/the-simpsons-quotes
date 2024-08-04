@@ -17,7 +17,6 @@ export const NavBar = styled.nav`
     place-items: center;
     position: fixed;
     bottom: 25px;
-    z-index: 10;
 
     ${media.tablet} {
         width: 18rem;
