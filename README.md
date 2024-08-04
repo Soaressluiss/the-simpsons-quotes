@@ -32,9 +32,9 @@
 
 ## Descrição:
 
-O projeto consiste em uma dashboard que exibe citações das personagens do famoso desenho norte-americano "[Os Simpsons](https://www.adorocinema.com/series/serie-290/)".
+O projeto consiste em uma página que exibe citações das personagens do famoso desenho norte-americano "[Os Simpsons](https://www.adorocinema.com/series/serie-290/)".
 
-Foi desenvolvido com o objetivo de aprimorar o conhecimento em tecnologias como React, TypeScript e Styled Components, além de aperfeiçoar as habilidades de integração com a API "[The Simpsons Quotes](https://thesimpsonsquoteapi.glitch.me/)" por meio do uso do Axios para realizar solicitações de dados.
+Foi desenvolvido com o objetivo de aprimorar o conhecimento nas tecnologias: React, TypeScript e Styled Components, além de aperfeiçoar as habilidades de integração com a API "[The Simpsons Quotes](https://thesimpsonsquoteapi.glitch.me/)" por meio do uso do Axios para realizar solicitações de dados.
 
 <div align="right">
 
@@ -53,7 +53,6 @@ Foi desenvolvido com o objetivo de aprimorar o conhecimento em tecnologias como 
 -   Animações;
 -   Controle de som (play, pause, vol+, vol-);
 -   Buscar personagens por nome;
--   Página de Error 404 personalizada (caso o usuário acesse uma rota diferente de `/`);
 -   SEO - (Search Engine Optimization (otimização para mecanismos de busca));
 -   Responsividade a diversos tamanhos de tela (desktops, tablets e smartphones);
 
@@ -65,16 +64,16 @@ Foi desenvolvido com o objetivo de aprimorar o conhecimento em tecnologias como 
 
 ## Tecnologias utilizadas:
 
-| Tecnologias | Ícones |
-| :---------: | :----: |
-| [**React**](https://react.dev/) | <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" height="40" width="40" /> |
-| [**React Router Dom v.6**](https://reactrouter.com/en/main) | <img src="https://www.svgrepo.com/show/354262/react-router.svg" height="40" width="40" /> |
-| [**React Icons**](https://react-icons.github.io/react-icons/) | <img src="https://camo.githubusercontent.com/48d099290b4cb2d7937bcd96e8497cf1845b54a810a6432c70cf944b60b40c77/68747470733a2f2f7261776769742e636f6d2f676f72616e67616a69632f72656163742d69636f6e732f6d61737465722f72656163742d69636f6e732e737667" height="40" width="40" /> |
-| [**Styled Components**](https://styled-components.com/) | <img src="https://cdn-media-1.freecodecamp.org/images/1*p1TndLk3UsGPBsM7qHPZIw.png" height="40" width="50" /> |
-| [**TypeScript**](https://www.typescriptlang.org/) | <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" height="40px" /> |
-| [**Axios**](https://axios-http.com/) | <img src="https://axios-http.com/assets/logo.svg" width="100px" /> |
-| [**Vite**](https://vitejs.dev/) | <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Vitejs-logo.svg/1200px-Vitejs-logo.svg.png" height="40px" /> |
-
+|                          Tecnologias                          |                                                              Ícones                                                              |
+| :-----------------------------------------------------------: | :------------------------------------------------------------------------------------------------------------------------------: |
+|                [**React**](https://react.dev/)                |         <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" height="40" width="40" />         |
+|  [**React Router Dom v.6**](https://reactrouter.com/en/main)  |                    <img src="https://www.svgrepo.com/show/354262/react-router.svg" height="40" width="40" />                     |
+| [**React Icons**](https://react-icons.github.io/react-icons/) |                 <img src="https://avatars.githubusercontent.com/u/39895671?s=200&v=4" height="40" width="40" />                  |
+|    [**Styled Components**](https://styled-components.com/)    |          <img src="https://cdn-media-1.freecodecamp.org/images/1*p1TndLk3UsGPBsM7qHPZIw.png" height="40" width="50" />           |
+|       [**TypeScript**](https://www.typescriptlang.org/)       |        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" height="40px" />         |
+|             [**Axios**](https://axios-http.com/)              |                                <img src="https://axios-http.com/assets/logo.svg" width="100px" />                                |
+|           [**Radix UI**](https://www.radix-ui.com/)           |                      <img src="https://avatars.githubusercontent.com/u/75042455?s=200&v=4" width="45px" />                       |
+|                [**Vite**](https://vitejs.dev/)                | <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Vitejs-logo.svg/1200px-Vitejs-logo.svg.png" height="40px" /> |
 
 <div align="right">
 
@@ -86,7 +85,7 @@ Foi desenvolvido com o objetivo de aprimorar o conhecimento em tecnologias como 
 
 ## Inicie localmente:
 
-Primeiro certifique-se de ter o [Node](https://nodejs.org/en) instalado em sua máquina. 
+Primeiro certifique-se de ter o [Node](https://nodejs.org/en) instalado em sua máquina.
 
 <hr>
 
@@ -101,6 +100,7 @@ Vá para o diretório da pasta:
 ```
 cd the-simpsons-quotes
 ```
+
 Instale todas as dependências:
 
 ```
@@ -154,7 +154,6 @@ npm run dev
 Esse projeto está sob a licença MIT. Veja o arquivo [License](./License) para mais detalhes.
 
 <hr>
-
 
 <div align='center'>
  
