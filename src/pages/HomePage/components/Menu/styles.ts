@@ -17,6 +17,7 @@ export const NavBar = styled.nav`
     place-items: center;
     position: fixed;
     bottom: 25px;
+    z-index: 998;
 
     ${media.tablet} {
         width: 18rem;
@@ -24,7 +25,7 @@ export const NavBar = styled.nav`
     }
 
     ${media.mobile} {
-        width: 14rem;
+        width: 15.5rem;
     }
     > ul {
         display: flex;

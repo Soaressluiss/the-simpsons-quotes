@@ -1,6 +1,6 @@
 import React, { useContext, useState, useCallback } from "react";
 import { IconsMenu, NavBar } from "./styles";
-import { BsHeart, BsMusicNoteBeamed, BsMoon, BsSun, BsArrowUp } from "react-icons/bs";
+import { BsHeart, BsMusicNoteBeamed, BsMoon, BsSun, BsArrowUp, BsSearch } from "react-icons/bs";
 import { SongController } from "../SongController";
 import dark from "../../../../styles/themes/dark";
 import light from "../../../../styles/themes/light";
@@ -9,11 +9,12 @@ import { UseLocalStorage } from "../../../../hooks/useLocalStorage";
 
 type MenuProps = {
     handleModalFavorite(isOpen: boolean): void;
+    handleToggleSeach: (ishide: boolean) => void;
 };
 
-type ActiveType = "Favorites" | "Music" | "Theme" | "Top" | "";
+type ActiveType = "Favorites" | "Music" | "Theme" | "Search" | "Top" | "";
 
-export const Menu: React.FC<MenuProps> = ({ handleModalFavorite }) => {
+export const Menu: React.FC<MenuProps> = ({ handleModalFavorite, handleToggleSeach }) => {
     const [active, setActive] = useState<ActiveType>("");
     const [showControllerSong, setShowControllerSong] = useState(false);
     const { setLocalStorage } = UseLocalStorage();
@@ -27,6 +28,21 @@ export const Menu: React.FC<MenuProps> = ({ handleModalFavorite }) => {
         });
         setActive("Theme");
     }, [setCurrentTheme, setLocalStorage]);
+
+    const handleSearch = () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+        setActive("Search");
+        window.scrollY === 0 && handleToggleSeach(true);
+
+        const handleScroll = () => {
+            const scrollPosition = window.scrollY;
+            scrollPosition === 0 ? handleToggleSeach(true) : handleToggleSeach(false);
+        };
+        window.addEventListener("scroll", handleScroll);
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+        };
+    };
 
     const handleTop = () => {
         window.scrollTo({ top: 0, behavior: "smooth" });
@@ -52,7 +68,8 @@ export const Menu: React.FC<MenuProps> = ({ handleModalFavorite }) => {
             onclick: handleTheme,
         },
         { id: 2, title: "Music", icon: <BsMusicNoteBeamed />, onclick: handleSong },
-        { id: 3, title: "Top", icon: <BsArrowUp />, onclick: handleTop },
+        { id: 3, title: "Search", icon: <BsSearch />, onclick: handleSearch },
+        { id: 4, title: "Top", icon: <BsArrowUp />, onclick: handleTop },
     ];
 
     return (

@@ -3,11 +3,14 @@ import { ContainerSearch, ElipseBtn, Input } from "./styles";
 import { FaSearch } from "react-icons/fa";
 import { CharacterContext } from "../../../../contexts/CharacterContext";
 
-export const InputSeach: React.FC = () => {
+interface InputSearchProps {
+    toggleSearch: boolean;
+}
+export const InputSeach: React.FC<InputSearchProps> = ({ toggleSearch }) => {
     const { searchCharacter, setSearchCharacter, HandleSearch } = useContext(CharacterContext);
 
     return (
-        <ContainerSearch onSubmit={HandleSearch}>
+        <ContainerSearch onSubmit={HandleSearch} $active={toggleSearch}>
             <Input
                 type="text"
                 name="search"

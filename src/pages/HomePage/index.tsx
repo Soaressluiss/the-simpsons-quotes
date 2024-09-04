@@ -11,7 +11,10 @@ import { LoadingScreen } from "../../components/LoadingScreen";
 export const HomePage: React.FC = () => {
     const [openModalCharacter, setopenModalCharacter] = useState<boolean>(false);
     const [openModalFavorites, setopenModalFavorites] = useState<boolean>(false);
-    const [hideLoading, setHideLoading] = useState(true);
+    const [hideLoading, setHideLoading] = useState<boolean>(true);
+    const [toggleSearch, setToggleSearch] = useState<boolean>(false);
+
+    const handleToggleSeach = (ishide: boolean) => setToggleSearch(ishide);
 
     function handleModalCharacter(isOpen: boolean) {
         setopenModalCharacter(isOpen);
@@ -35,8 +38,8 @@ export const HomePage: React.FC = () => {
             <ModalFavorites openFavorites={openModalFavorites} handleModalFavorite={handleModalFavorite} />
             <Container>
                 <LogoImage onClick={() => reloadPage()} src={Logo} alt="logo" />
-                <Menu handleModalFavorite={handleModalFavorite} />
-                <InputSeach />
+                <Menu handleToggleSeach={handleToggleSeach} handleModalFavorite={handleModalFavorite} />
+                <InputSeach toggleSearch={toggleSearch} />
                 <Dashboard handleModalCharacter={handleModalCharacter} />
             </Container>
         </>

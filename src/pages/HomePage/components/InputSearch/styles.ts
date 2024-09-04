@@ -1,7 +1,33 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { media } from "../../../../styles/customMediaQuery";
 
-export const ContainerSearch = styled.form`
+interface Props {
+    $active: boolean;
+}
+
+const FadeIn = keyframes`
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+`;
+
+const FadeOut = keyframes`
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+`;
+
+export const ContainerSearch = styled.form<Props>`
     max-width: 700px;
     max-height: 60px;
     height: 100%;
@@ -10,13 +36,19 @@ export const ContainerSearch = styled.form`
     flex-direction: row;
     align-items: center;
     gap: 0.9rem;
+    opacity: ${({ $active }) => ($active ? 1 : 0)};
+    animation: ${({ $active }) => ($active ? FadeIn : FadeOut)} 0.3s ease-in-out forwards;
+
     ${media.tablet} {
-        max-width: 500px;
+        max-width: 400px;
         gap: 0.4rem;
     }
+
     ${media.mobile} {
         max-width: 18.125rem;
     }
+
+    ${({ $active }) => !$active && "pointer-events: none;"}
 `;
 
 export const Input = styled.input`

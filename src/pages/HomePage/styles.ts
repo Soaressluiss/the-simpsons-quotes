@@ -11,6 +11,7 @@ export const Container = styled.main`
     align-items: center;
     justify-content: center;
     gap: 2rem;
+    padding-bottom: 200px;
     ${media.mobile} {
         gap: 1.5rem;
     }
