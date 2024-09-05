@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Logo from "../../assets/Logo.png";
+import Logo from "../../assets/Logo.svg";
 import { Dashboard } from "./components/Dashboard";
 import { InputSeach } from "./components/InputSearch";
 import { Menu } from "./components/Menu";

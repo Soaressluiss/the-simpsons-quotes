@@ -12,15 +12,21 @@ export const Container = styled.main`
     justify-content: center;
     gap: 2rem;
     padding-bottom: 200px;
+    ${media.tablet} {
+        gap: 1.4rem;
+    }
     ${media.mobile} {
-        gap: 1.5rem;
+        gap: 1rem;
     }
 `;
 
 export const LogoImage = styled.img`
     display: flex;
-    width: 15.625rem;
-    height: 5.25rem;
+    width: 20rem;
+    height: 8rem;
     margin-top: 1.75rem;
     cursor: pointer;
+    ${media.tablet} {
+        height: 5rem;
+    }
 `;
