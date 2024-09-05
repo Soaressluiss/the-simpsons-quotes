@@ -13,7 +13,7 @@ export const SongContainer = styled.section`
     width: 150px;
     height: 50px;
     position: absolute;
-    right: 50px;
+    /* right: 50px; */
     bottom: 85px;
     border-radius: 5px;
     display: grid;
@@ -32,12 +32,9 @@ export const SongContainer = styled.section`
     }
 
     ${media.tablet} {
-        right: 40px;
         bottom: 70px;
     }
-    ${media.mobile} {
-        right: 10px;
-    }
+
     > ul {
         display: flex;
         flex-direction: row;
