@@ -123,7 +123,7 @@ npm run dev
 
 ## Gif demostrativo:
 
-![animation](./src/assets/GifAnimado.gif)
+![animation](./src/assets/Animação.gif)
 
 <div align="right">
 
