@@ -84,9 +84,11 @@ export const CharacterProvider: React.FC<ICharacterProviderProps> = ({ children 
             const response = await api.get(`?count=10&character=${searchCharacter}`);
 
             setDataSearch(response.data);
+            setSearchCharacter("");
         } catch (err) {
             const error = err as AxiosError;
             console.error(error);
+            setSearchCharacter("");
         } finally {
             setIsLoading(false);
         }
