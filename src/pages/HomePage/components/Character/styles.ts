@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { media } from "../../../../styles/customMediaQuery";
+import { fadeUp } from "../SongController/styles";
 
 export const CharacterContainer = styled.figure`
     width: 250px;
@@ -11,6 +12,7 @@ export const CharacterContainer = styled.figure`
     cursor: pointer;
     display: grid;
     place-items: center;
+    animation: ${fadeUp} 1s ease forwards;
     &:active {
         transition: all ease;
         transform: scale(0.99);
