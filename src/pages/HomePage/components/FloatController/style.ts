@@ -32,6 +32,7 @@ export const FloatSong = styled.div<FloatSongProps>`
     border: 1px ${({ theme }) => theme.colors.grayPlatinum} solid;
     align-items: center;
     justify-content: space-between;
+    z-index: 1;
     ${media.tablet} {
         top: 70px;
         left: 10px;

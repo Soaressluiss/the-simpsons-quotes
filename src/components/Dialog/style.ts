@@ -17,6 +17,7 @@ export const DialogContent = styled(Dialog.Content)`
     min-height: 416px;
     display: grid;
     place-items: center;
+    z-index: 2;
     &:focus {
         outline: none;
     }
