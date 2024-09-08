@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Logo from "../../assets/Logo.svg";
 import { Dashboard } from "./components/Dashboard";
 import { InputSeach } from "./components/InputSearch";
@@ -13,7 +13,12 @@ export const HomePage: React.FC = () => {
     const [openModalFavorites, setopenModalFavorites] = useState<boolean>(false);
     const [hideLoading, setHideLoading] = useState<boolean>(true);
     const [toggleSearch, setToggleSearch] = useState<boolean>(false);
+    const [invisibleController, setInvisibleController] = useState<boolean>(false);
 
+    const controlSongRef = useRef<HTMLAudioElement>(null);
+    function minimizeSongController(isvisible: boolean) {
+        setInvisibleController(isvisible);
+    }
     const handleToggleSeach = (ishide: boolean) => setToggleSearch(ishide);
 
     function handleModalCharacter(isOpen: boolean) {
@@ -38,9 +43,20 @@ export const HomePage: React.FC = () => {
             <ModalFavorites openFavorites={openModalFavorites} handleModalFavorite={handleModalFavorite} />
             <Container>
                 <LogoImage onClick={() => reloadPage()} src={Logo} alt="logo" />
-                <Menu handleToggleSeach={handleToggleSeach} handleModalFavorite={handleModalFavorite} />
+                <Menu
+                    controlSongRef={controlSongRef}
+                    invisibleController={invisibleController}
+                    minimizeSongController={minimizeSongController}
+                    handleToggleSeach={handleToggleSeach}
+                    handleModalFavorite={handleModalFavorite}
+                />
                 <InputSeach toggleSearch={toggleSearch} />
-                <Dashboard handleModalCharacter={handleModalCharacter} />
+                <Dashboard
+                    controlSongRef={controlSongRef}
+                    handleModalCharacter={handleModalCharacter}
+                    toggleFloatSong={invisibleController}
+                    minimizeSongController={minimizeSongController}
+                />
             </Container>
         </>
     );

@@ -1,13 +1,22 @@
 import song from "../../../../assets/audio/song.mp3";
 
-import { BsFillDashCircleFill, BsFillPlayCircleFill, BsFillPlusCircleFill, BsFillStopCircleFill } from "react-icons/bs";
+import {
+    BsArrowUpRightCircleFill,
+    BsFillDashCircleFill,
+    BsFillPlayCircleFill,
+    BsFillPlusCircleFill,
+    BsFillStopCircleFill,
+} from "react-icons/bs";
 import { IconSong, SongContainer, Audio } from "./styles";
-import { useRef, useState } from "react";
+import { useState } from "react";
 
-export const SongController: React.FC = () => {
+interface Props {
+    invisibleController: boolean;
+    minimizeSongController(isvisible: boolean): void;
+    controlSongRef: React.RefObject<HTMLAudioElement>;
+}
+export const SongController: React.FC<Props> = ({ invisibleController, minimizeSongController, controlSongRef }) => {
     const [select, setSelect] = useState<string>("");
-
-    const controlSongRef = useRef<HTMLAudioElement>(null);
 
     function handlePlay() {
         if (controlSongRef.current) {
@@ -42,15 +51,21 @@ export const SongController: React.FC = () => {
             }
         }
     }
+
+    function handleMinimize() {
+        handlePlay();
+        minimizeSongController(true);
+    }
     const icons = [
         { id: 0, title: "play", icon: <BsFillPlayCircleFill />, onclick: () => handlePlay() },
         { id: 1, title: "pause", icon: <BsFillStopCircleFill />, onclick: () => handleStop() },
         { id: 2, title: "vol+", icon: <BsFillPlusCircleFill />, onclick: () => incrementVol() },
         { id: 3, title: "vol-", icon: <BsFillDashCircleFill />, onclick: () => decrementVol() },
+        { id: 4, title: "minimize", icon: <BsArrowUpRightCircleFill />, onclick: () => handleMinimize() },
     ];
 
     return (
-        <SongContainer>
+        <SongContainer $isVisible={invisibleController}>
             <ul>
                 {icons.map((icon) => (
                     <IconSong key={icon.id} $isActive={select === icon.title} onClick={icon.onclick}>

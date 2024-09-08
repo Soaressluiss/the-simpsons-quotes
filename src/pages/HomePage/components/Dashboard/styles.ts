@@ -12,6 +12,7 @@ export const DashboardContainer = styled.section`
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    position: relative;
 
     ${media.mobile} {
         padding: 1.25rem;

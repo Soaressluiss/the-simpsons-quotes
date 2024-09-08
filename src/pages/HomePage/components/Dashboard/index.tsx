@@ -5,11 +5,20 @@ import { DashboardContainer } from "./styles";
 import { useState, useEffect, useRef, useContext } from "react";
 import Loading from "../../../../components/Loading";
 import { CharacterContext } from "../../../../contexts/CharacterContext";
+import { FloatController } from "../FloatController";
 
 interface IDashboardProps {
     handleModalCharacter(isOpen: boolean): void;
+    toggleFloatSong: boolean;
+    controlSongRef: React.RefObject<HTMLAudioElement>;
+    minimizeSongController(isvisible: boolean): void;
 }
-export const Dashboard: React.FC<IDashboardProps> = ({ handleModalCharacter }) => {
+export const Dashboard: React.FC<IDashboardProps> = ({
+    handleModalCharacter,
+    toggleFloatSong,
+    controlSongRef,
+    minimizeSongController,
+}) => {
     const [quotePerPage, setQuotePerPage] = useState(2);
     const { data, setData, dataSearch, isLoading, setIsLoading } = useContext(CharacterContext);
 
@@ -50,6 +59,11 @@ export const Dashboard: React.FC<IDashboardProps> = ({ handleModalCharacter }) =
 
     return (
         <DashboardContainer>
+            <FloatController
+                minimizeSongController={minimizeSongController}
+                controlSongRef={controlSongRef}
+                toggleFloatSong={toggleFloatSong}
+            />
             <section>
                 {dataSearch.length < 1
                     ? data.map((item, id) => (

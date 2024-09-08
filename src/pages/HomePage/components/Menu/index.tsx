@@ -10,11 +10,20 @@ import { UseLocalStorage } from "../../../../hooks/useLocalStorage";
 type MenuProps = {
     handleModalFavorite(isOpen: boolean): void;
     handleToggleSeach: (ishide: boolean) => void;
+    invisibleController: boolean;
+    minimizeSongController(isvisible: boolean): void;
+    controlSongRef: React.RefObject<HTMLAudioElement>;
 };
 
 type ActiveType = "Favorites" | "Music" | "Theme" | "Search" | "Top" | "";
 
-export const Menu: React.FC<MenuProps> = ({ handleModalFavorite, handleToggleSeach }) => {
+export const Menu: React.FC<MenuProps> = ({
+    handleModalFavorite,
+    handleToggleSeach,
+    invisibleController,
+    minimizeSongController,
+    controlSongRef,
+}) => {
     const [active, setActive] = useState<ActiveType>("");
     const [showControllerSong, setShowControllerSong] = useState(false);
     const { setLocalStorage } = UseLocalStorage();
@@ -57,6 +66,7 @@ export const Menu: React.FC<MenuProps> = ({ handleModalFavorite, handleToggleSea
     const handleSong = () => {
         setActive("Music");
         setShowControllerSong(!showControllerSong);
+        minimizeSongController(false);
     };
 
     const Icons = [
@@ -81,7 +91,13 @@ export const Menu: React.FC<MenuProps> = ({ handleModalFavorite, handleToggleSea
                     </IconsMenu>
                 ))}
             </ul>
-            {showControllerSong && <SongController />}
+            {showControllerSong && (
+                <SongController
+                    controlSongRef={controlSongRef}
+                    invisibleController={invisibleController}
+                    minimizeSongController={minimizeSongController}
+                />
+            )}
         </NavBar>
     );
 };

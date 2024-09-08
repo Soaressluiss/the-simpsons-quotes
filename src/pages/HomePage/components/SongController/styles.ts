@@ -4,27 +4,36 @@ import { media } from "../../../../styles/customMediaQuery";
 interface IIconProps {
     $isActive: string | boolean;
 }
+
+interface ISongContainerProps {
+    $isVisible: boolean;
+}
 export const fadeUp = keyframes`
     from {opacity: 0; transform: translateY(50px)}
     to { opacity:1; transform: translateY(0)}
 `;
-export const SongContainer = styled.section`
+export const fadeOut = keyframes`
+    from {opacity: 1; transform: translateY(0px)}
+    to { opacity:0; transform: translateY(50px)}
+`;
+
+export const SongContainer = styled.section<ISongContainerProps>`
     background-color: ${({ theme }) => theme.colors.secondary};
-    width: 150px;
+    width: 180px;
     height: 50px;
     position: absolute;
-    /* right: 50px; */
     bottom: 85px;
     border-radius: 5px;
     display: grid;
+    visibility: ${({ $isVisible }) => ($isVisible ? "hidden" : "visible")};
     place-items: center;
-    animation: ${fadeUp} 0.4s ease;
+    animation: ${({ $isVisible }) => ($isVisible ? fadeOut : fadeUp)} 0.4s ease;
     &::before {
         content: "";
         display: block;
         position: absolute;
         top: 50px;
-        right: 45px;
+        right: 60px;
         border-width: 15px;
         border-style: solid;
         border-color: ${({ theme }) => theme.colors.secondary} transparent transparent transparent;
