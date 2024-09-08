@@ -34,7 +34,7 @@
 
 O projeto consiste em uma página que exibe citações das personagens do famoso desenho norte-americano "[Os Simpsons](https://www.adorocinema.com/series/serie-290/)".
 
-Foi desenvolvido com o objetivo de aprimorar o conhecimento nas tecnologias: React, TypeScript e Styled Components, além de aperfeiçoar as habilidades de integração com a API "[The Simpsons Quotes](https://thesimpsonsquoteapi.glitch.me/)" por meio do uso do Axios para realizar solicitações de dados.
+Foi desenvolvido com o objetivo de aprimorar o conhecimento nas tecnologias: React, TypeScript e Styled Components, além de aperfeiçoar as habilidades de integração com a API "[The Simpsons Quotes](https://thesimpsonsquoteapi.glitch.me/)" por meio do uso do Axios para realizar requests HTTP.
 
 <div align="right">
 
@@ -51,7 +51,7 @@ Foi desenvolvido com o objetivo de aprimorar o conhecimento nas tecnologias: Rea
 -   Salvar citações (as citações salvas, ficam guardadas no LocalStorage do browser);
 -   Scroll Infinito para o carregamento de mais quotes;
 -   Animações;
--   Controle de som (play, pause, vol+, vol-);
+-   Controle de som (play, pause, vol+, vol-, minimizar player)
 -   Buscar personagens por nome;
 -   SEO - (Search Engine Optimization (otimização para mecanismos de busca));
 -   Responsividade a diversos tamanhos de tela (desktops, tablets e smartphones);
@@ -157,7 +157,7 @@ Esse projeto está sob a licença MIT. Veja o arquivo [License](./License) para 
 
 <div align='center'>
  
-#### Feito com ❤ por [Luís Soares](https://github.com/Soaressluiss) ©2023
+#### Feito com ❤ por [Luís Soares](https://github.com/Soaressluiss) ©2024
 
 #### Gostou do projeto? Me mande uma mensagem!😄
 
