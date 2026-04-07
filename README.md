@@ -1,8 +1,23 @@
+> ⚠️ **Importante**
+>
+> A API utilizada neste projeto foi descontinuada, portanto a aplicação pode não funcionar corretamente no momento.
+>
+> O GIF demonstrativo incluído no repositório foi registrado antes da desativação e representa o funcionamento completo da aplicação.
+>
+> Apesar disso, o projeto permanece relevante como demonstração prática das minhas habilidades em desenvolvimento front-end, incluindo consumo de APIs, gerenciamento de estado, tratamento de dados assíncronos, componentização e boas práticas com React e TypeScript.
+>
+> 💡 Caso necessário, a aplicação pode ser facilmente adaptada para utilizar uma nova API futuramente.
+</div>
+
+---
+
 <div>
 
 ![banner](./src/assets/banner%20GitHub.png)
 
-</div>
+
+
+
 <div align='center'>
 
 ![Language](https://img.shields.io/github/languages/count/Soaressluiss/the-simpsons-quotes?style=for-the-badge&logo=appveyor&color=blue)
@@ -16,7 +31,6 @@
 
 ## Tópicos:
 
--   [Deploy](#deploy)
 -   [Descrição](#descrição)
 -   [Funcionalidades](#funcionalidades)
 -   [Tecnologias utilizadas](#tecnologias-utilizadas)
@@ -24,11 +38,6 @@
 -   [Gif demostrativo](#gif-demostrativo)
 -   [Como contribuir](#como-contribuir)
 
-## Deploy:
-
-> [The Simpsons quotes 🍩👨‍🦲](https://the-simpsons-quotes-soaressluiss.vercel.app)
-
-<hr>
 
 ## Descrição:
 
